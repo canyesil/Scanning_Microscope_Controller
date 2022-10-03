@@ -1,0 +1,582 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26822,        572]
+NotebookOptionsPosition[     26349,        554]
+NotebookOutlinePosition[     26809,        572]
+CellTagsIndexPosition[     26766,        569]
+WindowTitle->Scanning Laser Microscope Controller
+WindowFrame->Palette*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     PanelBox[
+      TagBox[GridBox[{
+         {
+          ButtonBox["\<\"Reset Settings\"\>",
+           Appearance->Automatic,
+           
+           ButtonFunction:>(ClearAll["Global`*"]; 
+            AudioStop[]; $CellContext`dx = 50; $CellContext`dy = 
+             50; $CellContext`ratio = 1; $CellContext`LaserP = 
+             127; $CellContext`step = 150; $CellContext`path = 
+             NotebookDirectory[] <> "ControllerPalette.nb"; SetDirectory[
+              NotebookDirectory[]]; 
+            Import[NotebookDirectory[] <> "Functions.m"]; $CellContext`img = 
+             Graphics[{
+                EdgeForm[Dashed], Transparent, 
+                Rectangle[]}]; 
+            Export[NotebookDirectory[] <> "dashed_area.png", 
+              Framed[$CellContext`img]]; $CellContext`imgpath = 
+             NotebookDirectory[] <> "dashed_area.png"; $CellContext`refresh = 
+             ImageResize[
+               Import[NotebookDirectory[] <> "VistalCO_refresh_icon_2.png"], {
+               20, 20}]; $CellContext`img = 
+             Import[$CellContext`imgpath]; $CellContext`xrn = \
+$CellContext`GetFiles["/dev/", "cu."]; $CellContext`onoff = 
+             0; $CellContext`OutImage = 
+             ConstantImage[0.6, {600, 600}]; $CellContext`status = 
+             "Ready"; $CellContext`progresss = "0"; $CellContext`progreS = 
+             "0"; Null),
+           Evaluator->Automatic,
+           Method->"Preemptive"]},
+         {
+          PanelBox[
+           TemplateBox[{
+             PanelBox[
+              TagBox[
+               GridBox[{{
+                  StyleBox["\"Scanning Settings\"", "Title", 20, 
+                   RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
+                  SliderBox[
+                   Dynamic[$CellContext`dx], {2, 150, 2}]}, {
+                  TemplateBox[{
+                    StyleBox[
+                    InterpretationBox[
+                    Cell[
+                    BoxData[
+                    FormBox["\"dx: \"", TextForm]], "InlineText"], 
+                    Text["dx: "]], 12, StripOnInput -> False], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`dx, StandardForm]]}, "RowDefault"]}, {
+                  SliderBox[
+                   Dynamic[$CellContext`dy], {2, 150, 2}]}, {
+                  TemplateBox[{
+                    StyleBox[
+                    InterpretationBox[
+                    Cell[
+                    BoxData[
+                    FormBox["\"dy: \"", TextForm]], "InlineText"], 
+                    Text["dy: "]], 12, StripOnInput -> False], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`dy, StandardForm]]}, "RowDefault"]}, {
+                  SliderBox[
+                   Dynamic[$CellContext`ratio], {0.1, 3, 0.1}]}, {
+                  TemplateBox[{
+                    StyleBox[
+                    InterpretationBox[
+                    Cell[
+                    BoxData[
+                    FormBox["\"Magnification: \"", TextForm]], "InlineText"], 
+                    
+                    Text["Magnification: "]], 12, StripOnInput -> False], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`ratio, StandardForm]]}, 
+                   "RowDefault"]}, {
+                  TemplateBox[{
+                    ButtonBox[
+                    "\"Apply\"", 
+                    ButtonFunction :> ($CellContext`cmretto = 
+                    Table[0, $CellContext`dx, $CellContext`dy]; \
+$CellContext`img = ImageResize[
+                    Graphics[{
+                    EdgeForm[Dashed], Transparent, 
+                    Rectangle[]}], {
+                    Round[$CellContext`dx 3 $CellContext`ratio], 
+                    Round[$CellContext`dy 3 $CellContext`ratio]}]; Null), 
+                    ImageSize -> {80, 27}, Appearance -> Automatic, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    ButtonBox[
+                    "\"Process\"", 
+                    ButtonFunction :> ($CellContext`dim = {$CellContext`dx, \
+$CellContext`dy}; $CellContext`lines = \
+$CellContext`process2[$CellContext`dim, $CellContext`cmretto]; \
+$CellContext`plt = ListPlot[
+                    Accumulate[$CellContext`lines], 
+                    AspectRatio -> {$CellContext`dim}, PlotStyle -> 
+                    PointSize[0.008], ImageSize -> 200, Frame -> None, Axes -> 
+                    None, FrameTicks -> None]; $CellContext`img = 
+                    ImageResize[
+                    ImageRotate[
+                    Rasterize[$CellContext`plt], 0 Degree], {
+                    Round[$CellContext`dx 3 $CellContext`ratio], 
+                    
+                    Round[$CellContext`dy 
+                    3 $CellContext`ratio]}]; $CellContext`comngap = \
+({$CellContext`comm, $CellContext`gap} = \
+$CellContext`processC[$CellContext`LaserP, $CellContext`step, \
+$CellContext`dx, $CellContext`dy]); 
+                    Export[NotebookDirectory[] <> 
+                    "commngap.mx", $CellContext`comngap, "MX"]; 
+                    ImageSize -> {80, 27}), Appearance -> Automatic, 
+                    Evaluator -> Automatic, Method -> "Preemptive"]}, 
+                   "RowDefault"]}}, 
+                GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+                "Column", 
+                GridBoxItemSize -> {
+                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+               "Column"], ImageSize -> {250, 250}], 
+             PanelBox[
+              DynamicBox[
+               ToBoxes[
+                Refresh[$CellContext`img, UpdateInterval -> 0], 
+                StandardForm]], ImageSize -> {175, 250}]},
+            "RowDefault"]]},
+         {
+          PanelBox[
+           TagBox[GridBox[{
+              {
+               StyleBox["\<\"USB-Serial Device\"\>", "Title",
+                StripOnInput->False,
+                LineColor->RGBColor[0.216, 0.659, 0.675],
+                FrontFaceColor->RGBColor[0.216, 0.659, 0.675],
+                BackFaceColor->RGBColor[0.216, 0.659, 0.675],
+                GraphicsColor->RGBColor[0.216, 0.659, 0.675],
+                FontSize->20,
+                FontColor->RGBColor[0.216, 0.659, 0.675]]},
+              {
+               TemplateBox[{
+                 ButtonBox[
+                  GraphicsBox[
+                   TagBox[
+                    RasterBox[CompressedData["
+1:eJx1lAdQFGcUgN/t7t3RFLhDQDw4EAEpSlXqIb1IDXhiAhpBSixBUZqKIko0
+GFBACBIQKSGHjEgJCAQVIlgiopKoQSxoBnXArgMCt7d/9g50HCeZnW/f/juz
+37z/f++tXtTmkFgMALbJ0beQyBTXrVsjt4eq0Ath/Lb1cfEx0b7xiTFxMVvt
+onD6pdoMBA0pIQEhBDU95Qz3XUsYwQcEXGG+g1XgPhcI2OuM+6U7gX+6QIbf
+bicZXjttceF+b+zd+FvZtxRFyaIUkpr2Vd4uJAyz6ZQaQrKTH+gi88NMOYMd
+s8Bot4KaQQbLUi+dsNdOwcx4m7DZnHAAvWg2vHj3DP8fH6N6oJhhVTRb/srj
+zqGjw7HIVcStcqswabCok3u5pJOJlvUyketVFrI7q/TE5he1Ms9CY+OJ8Qmp
+C/8PH1F6I5ex4pR1UO+bVnRsaD8Z1eOJLGuV0eJmAjlcZVF+A0xy5RCTcruJ
+I6MWAplVq7z9dbTkS6lDQkmwjz6JWBrxkr5s2PZ7YGPN6PdU/ICb2LqdSRrX
+EKRFE5u06WIg2x5AdjTWXZjYrIU5qVOMIX4xSM6MiPymnSQ2nZ9YFmtvFvFS
+ri0fS3nkTPncwimH8yy0qI6NTGoIJGhSHXer17wjaOS+sGpiISMRIOPj7AnV
+TIzyFOn8KaYmpXumPZTUS0h91Xcy9oZf56PAfvkJj6tM0vYMW2wqYlNeIqMa
+39JFeoJD+izXPAPNgEqzjS4ntId1cjHEzQLUcLdUSFESqWe6NojeO32eaZci
+Clw6FN/7XFREHpdZaGkHhlxbuJKwdvVS62weWGdpYub75oBBsiI4fqcjZ1ug
+carw+vaDM+fGpJ2MT/ulrD8fFpdy5juL+JGOIs5Ju0bFp0sbZ6M1V7jI4Yi6
+vkP+fFh6aJ5OcIV9km+plb1Toa58ZncipHVugN4n3TBTFxnS586h05DcEQ07
+2jeAWeIcME1TxSxz1f29qvipjkd4s5wKDMDqkErQ5j5rdHr4JCoZPPB8U0/Q
+Ofc6/cyd59f7//PmofoH1ycQ4gkSXHL5voLDfG+TJBVYmKoM0n1aZ80lbPN4
+IOxS6Err+5oqH8pBlaN7UdWrFJTx0AsV3U7J+eCZ6UdZnQdf92qHtVmNHRlK
+QdFtbsXu+cZm9lm6YH+QD8tLLOa4Vxs2mldoUoIGvjj0kgkZ/8BxMumxKXVp
+9GTAtGs6x/sjg9jx8yXY+gv+rWvOeaH0u+FTmc/80LrBhZOeHXMvujZptTu3
+qj/Xq8SRZjFQ2tWATFqAcrrCQsLrWk9fjo0qfcjv2dtRMEzgsUEIGjbHFGp9
+mhcgl1aeeNll1pT/XUDL7wNyvAnI6gIgs2ZcoluGS3hHMXJBJUus3whUUl9o
+BaLoeiASnxRPQnCOJ86MACP1WLaPWix42/xEdJqICGRQT89EN0553iAml9HY
+XMRJi99wZHgCQzqlGFpQrkBq0HmK7hV8MTMbxJNXwwBhoIiHg+XsKHBVjgR3
+bgzDwyxHPs9cpPjQspWFLM/iyIrGsh1Hi0/h7/n5+B86GVhZ+GUtpFXIHImp
++Ep55PVTaa8wpPObWZ+GBfzgzdaLV1NQjSZ4quswm1mrwVTtG9xiXqqcp/Ye
+Vvi8XXicZgqWwN3A2KS8FkKUIsBFeE7pnuBH9W7wA80tVXH4Z70CEYUhAEHA
+V44CX04MYyUnGg/mROIeNI6cSELAiSJCuNHEt2qxeDInmkjU2Igf0Nkit4cR
+Bosy6lKl8yGbkSlySvaf7n90jbG2KIJlkKDFZa8BffocrGEluND40PjJopBe
+h4ENrAIbxioIpS8vgwQNhTfjr6V9x/g8Rynjk2Pw9+Nb0PFXG/zcUw75bdmM
+vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
+                    
+                    "], {{0, 20.}, {20., 0}}, {0, 255}, ColorFunction -> 
+                    RGBColor], 
+                    BoxForm`ImageTag[
+                    "Byte", ColorSpace -> "RGB", Interleaving -> True, 
+                    MetaInformation -> <|
+                    "Comments" -> <|"Software" -> "Adobe ImageReady"|>|>], 
+                    Selectable -> False], DefaultBaseStyle -> "ImageGraphics",
+                    ImageSizeRaw -> {20., 20.}, 
+                   PlotRange -> {{0, 20.}, {0, 20.}}], 
+                  ButtonFunction :> ($CellContext`xrn = $CellContext`GetFiles[
+                    "/dev/", "cu."]), Appearance -> None, Evaluator -> 
+                  Automatic, Method -> "Preemptive"], 
+                 PopupMenuBox[
+                  Dynamic[$CellContext`xrn], {
+                  "/dev/cu.Bluetooth-Incoming-Port" -> 
+                   "\"/dev/cu.Bluetooth-Incoming-Port\"", 
+                   "/dev/cu.wlan-debug" -> "\"/dev/cu.wlan-debug\""}], 
+                 "\"   \"", 
+                 ButtonBox[
+                 "\"ON\"", ButtonFunction :> 
+                  If[$CellContext`onoff == 
+                    0, $CellContext`c = 
+                    RGBColor[0, 1, 0, 0.5]; $CellContext`dev = 
+                    DeviceOpen[
+                    "Serial", {$CellContext`xrn, "BaudRate" -> 
+                    9600}]; $CellContext`onoff = 1, $CellContext`c = 
+                    RGBColor[0.9117, 0.396, 0.0274]; 
+                    DeviceClose[$CellContext`dev]; $CellContext`onoff = 0; 
+                    Null], Background -> Dynamic[$CellContext`c], 
+                  ImageSize -> {50, 50}, Appearance -> Automatic, Evaluator -> 
+                  Automatic, Method -> "Preemptive"], "\" \""},
+                "RowDefault"]},
+              {"\<\" \"\>"},
+              {
+               TagBox[GridBox[{
+                  {
+                   TemplateBox[{
+                    SliderBox[
+                    Dynamic[$CellContext`n], {0, 10, 0.1}], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`n, StandardForm]]},
+                    "RowDefault"]},
+                  {
+                   ButtonBox[
+                    StyleBox["\<\"Set Laser Power (Idle)\"\>", "Title",
+                    StripOnInput->False,
+                    LineColor->RGBColor[0.216, 0.659, 0.675],
+                    FrontFaceColor->RGBColor[0.216, 0.659, 0.675],
+                    BackFaceColor->RGBColor[0.216, 0.659, 0.675],
+                    GraphicsColor->RGBColor[0.216, 0.659, 0.675],
+                    FontSize->14,
+                    FontColor->RGBColor[0.216, 0.659, 0.675]],
+                    Appearance->Automatic,
+                    
+                    ButtonFunction:>(
+                    DeviceWriteBuffer[$CellContext`dev, StringPadLeft[
+                    ToString[$CellContext`n], 3, "0"] <> "r0m2l0\n"]; 
+                    Pause[0.2]),
+                    Evaluator->Automatic,
+                    Method->"Preemptive"]}
+                 },
+                 DefaultBaseStyle->"Column",
+                 GridBoxAlignment->{"Columns" -> {{Left}}},
+                 
+                 GridBoxItemSize->{
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+                "Column"]},
+              {"\<\"  \"\>"},
+              {"\<\"  \"\>"},
+              {
+               StyleBox["\<\"Writing Parameters\"\>", "Title",
+                StripOnInput->False,
+                LineColor->RGBColor[0.216, 0.659, 0.675],
+                FrontFaceColor->RGBColor[0.216, 0.659, 0.675],
+                BackFaceColor->RGBColor[0.216, 0.659, 0.675],
+                GraphicsColor->RGBColor[0.216, 0.659, 0.675],
+                FontSize->20,
+                FontColor->RGBColor[0.216, 0.659, 0.675]]},
+              {
+               SliderBox[Dynamic[$CellContext`LaserP], {0, 255, 1}]},
+              {
+               TemplateBox[{
+                 StyleBox[
+                  InterpretationBox[
+                   Cell[
+                    BoxData[
+                    FormBox["\"Laser Power(%): \"", TextForm]], "InlineText"], 
+                   Text["Laser Power(%): "]], 12, StripOnInput -> False], 
+                 DynamicBox[
+                  ToBoxes[$CellContext`LaserP, StandardForm]]},
+                "RowDefault"]},
+              {
+               SliderBox[Dynamic[$CellContext`step], {0, 1000, 10}]},
+              {
+               TemplateBox[{
+                 StyleBox[
+                  InterpretationBox[
+                   Cell[
+                    BoxData[
+                    FormBox["\"Step interval (ms): \"", TextForm]], 
+                    "InlineText"], 
+                   Text["Step interval (ms): "]], 12, StripOnInput -> False], 
+                 
+                 DynamicBox[
+                  ToBoxes[$CellContext`step, StandardForm]]},
+                "RowDefault"]},
+              {
+               TemplateBox[{
+                 ButtonBox[
+                 "\"RUN\"", 
+                  ButtonFunction :> ($CellContext`t = 
+                    False; $CellContext`fold = 
+                    "Signal_out_" <> StringReplace[
+                    DateString[], {" " -> "_", ":" -> "-"}]; 
+                   CreateDirectory[
+                    NotebookDirectory[] <> 
+                    "Measurements/" <> $CellContext`fold]; 
+                   Export[NotebookDirectory[] <> 
+                    "Measurements/" <> $CellContext`fold <> 
+                    "/dxdy.mx", {$CellContext`dx, $CellContext`dy}]; \
+{$CellContext`comm, $CellContext`gap} = 
+                    Import[NotebookDirectory[] <> 
+                    "commngap.mx"]; $CellContext`temp = 
+                    "Running..."; $CellContext`astream = 
+                    AudioStream[$DefaultAudioInputDevice]; $CellContext`len = 
+                    Length[$CellContext`comm]; $CellContext`recstart = 
+                    Range[1, $CellContext`len, 3]; $CellContext`recstop = 
+                    Range[3, $CellContext`len, 3]; 
+                   For[$CellContext`ii = 
+                    1, $CellContext`ii <= $CellContext`len, 
+                    
+                    Increment[$CellContext`ii], $CellContext`progreS = 
+                    ToString[($CellContext`ii 100)/$CellContext`len]; If[
+                    MemberQ[$CellContext`recstop, $CellContext`ii], 
+                    AudioStop[]; $CellContext`aud = 
+                    Audio[$CellContext`recording]; 
+                    Export[NotebookDirectory[] <> 
+                    "Measurements/" <> $CellContext`fold <> "/" <> 
+                    ToString[$CellContext`ii] <> ".wav", $CellContext`aud]; 
+                    Pause[0.1]; Null]; 
+                    If[$CellContext`t, $CellContext`temp = "Stopped!"; 
+                    Break[]]; DeviceWriteBuffer[$CellContext`dev, 
+                    Part[$CellContext`comm, $CellContext`ii]]; If[
+                    
+                    MemberQ[$CellContext`recstart, $CellContext`ii], \
+$CellContext`recording = AudioRecord[$CellContext`astream]]; 
+                    Pause[Part[$CellContext`gap, $CellContext`ii] 10^(-3) + 
+                    0.2]; Null]; $CellContext`temp = "Finished."; Null), 
+                  ImageSize -> {70, 40}, Method -> "Queued", Appearance -> 
+                  Automatic, Evaluator -> Automatic], 
+                 ButtonBox[
+                 "\"STOP\"", 
+                  ButtonFunction :> ($CellContext`t = True; $CellContext`temp = 
+                    "Stopped"; AudioStop[]; Null), Method -> "Preemptive", 
+                  ImageSize -> {70, 40}, Appearance -> Automatic, Evaluator -> 
+                  Automatic]},
+                "RowDefault"]},
+              {
+               DynamicBox[ToBoxes[
+                 Refresh[$CellContext`temp, UpdateInterval -> 0], 
+                 StandardForm],
+                ImageSizeCache->{54., {1., 8.}}]},
+              {
+               TemplateBox[{"\"Progress: \"", 
+                 DynamicBox[
+                  ToBoxes[
+                   Refresh[$CellContext`progreS, UpdateInterval -> 0], 
+                   StandardForm]], "\"%\""},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           ImageSize->{480, 370}]}
+        },
+        DefaultBaseStyle->"Column",
+        GridBoxAlignment->{"Columns" -> {{Left}}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Column"]]},
+    {
+     PanelBox[
+      TemplateBox[{
+        TagBox[
+         GridBox[{{
+            StyleBox["\"Image Process\"", "Title", 20, 
+             RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
+           "\" \""}, {
+            InterpretationBox[
+             Cell[
+              BoxData[
+               FormBox["\"Choose the folder\"", TextForm]], "InlineText"], 
+             Text["Choose the folder"]]}, {
+            TemplateBox[{
+              PopupMenuBox[
+               Dynamic[$CellContext`folder], {}], 
+              ButtonBox[
+               GraphicsBox[
+                TagBox[
+                 RasterBox[CompressedData["
+1:eJx1lAdQFGcUgN/t7t3RFLhDQDw4EAEpSlXqIb1IDXhiAhpBSixBUZqKIko0
+GFBACBIQKSGHjEgJCAQVIlgiopKoQSxoBnXArgMCt7d/9g50HCeZnW/f/juz
+37z/f++tXtTmkFgMALbJ0beQyBTXrVsjt4eq0Ath/Lb1cfEx0b7xiTFxMVvt
+onD6pdoMBA0pIQEhBDU95Qz3XUsYwQcEXGG+g1XgPhcI2OuM+6U7gX+6QIbf
+bicZXjttceF+b+zd+FvZtxRFyaIUkpr2Vd4uJAyz6ZQaQrKTH+gi88NMOYMd
+s8Bot4KaQQbLUi+dsNdOwcx4m7DZnHAAvWg2vHj3DP8fH6N6oJhhVTRb/srj
+zqGjw7HIVcStcqswabCok3u5pJOJlvUyketVFrI7q/TE5he1Ms9CY+OJ8Qmp
+C/8PH1F6I5ex4pR1UO+bVnRsaD8Z1eOJLGuV0eJmAjlcZVF+A0xy5RCTcruJ
+I6MWAplVq7z9dbTkS6lDQkmwjz6JWBrxkr5s2PZ7YGPN6PdU/ICb2LqdSRrX
+EKRFE5u06WIg2x5AdjTWXZjYrIU5qVOMIX4xSM6MiPymnSQ2nZ9YFmtvFvFS
+ri0fS3nkTPncwimH8yy0qI6NTGoIJGhSHXer17wjaOS+sGpiISMRIOPj7AnV
+TIzyFOn8KaYmpXumPZTUS0h91Xcy9oZf56PAfvkJj6tM0vYMW2wqYlNeIqMa
+39JFeoJD+izXPAPNgEqzjS4ntId1cjHEzQLUcLdUSFESqWe6NojeO32eaZci
+Clw6FN/7XFREHpdZaGkHhlxbuJKwdvVS62weWGdpYub75oBBsiI4fqcjZ1ug
+carw+vaDM+fGpJ2MT/ulrD8fFpdy5juL+JGOIs5Ju0bFp0sbZ6M1V7jI4Yi6
+vkP+fFh6aJ5OcIV9km+plb1Toa58ZncipHVugN4n3TBTFxnS586h05DcEQ07
+2jeAWeIcME1TxSxz1f29qvipjkd4s5wKDMDqkErQ5j5rdHr4JCoZPPB8U0/Q
+Ofc6/cyd59f7//PmofoH1ycQ4gkSXHL5voLDfG+TJBVYmKoM0n1aZ80lbPN4
+IOxS6Err+5oqH8pBlaN7UdWrFJTx0AsV3U7J+eCZ6UdZnQdf92qHtVmNHRlK
+QdFtbsXu+cZm9lm6YH+QD8tLLOa4Vxs2mldoUoIGvjj0kgkZ/8BxMumxKXVp
+9GTAtGs6x/sjg9jx8yXY+gv+rWvOeaH0u+FTmc/80LrBhZOeHXMvujZptTu3
+qj/Xq8SRZjFQ2tWATFqAcrrCQsLrWk9fjo0qfcjv2dtRMEzgsUEIGjbHFGp9
+mhcgl1aeeNll1pT/XUDL7wNyvAnI6gIgs2ZcoluGS3hHMXJBJUus3whUUl9o
+BaLoeiASnxRPQnCOJ86MACP1WLaPWix42/xEdJqICGRQT89EN0553iAml9HY
+XMRJi99wZHgCQzqlGFpQrkBq0HmK7hV8MTMbxJNXwwBhoIiHg+XsKHBVjgR3
+bgzDwyxHPs9cpPjQspWFLM/iyIrGsh1Hi0/h7/n5+B86GVhZ+GUtpFXIHImp
++Ep55PVTaa8wpPObWZ+GBfzgzdaLV1NQjSZ4quswm1mrwVTtG9xiXqqcp/Ye
+Vvi8XXicZgqWwN3A2KS8FkKUIsBFeE7pnuBH9W7wA80tVXH4Z70CEYUhAEHA
+V44CX04MYyUnGg/mROIeNI6cSELAiSJCuNHEt2qxeDInmkjU2Igf0Nkit4cR
+Bosy6lKl8yGbkSlySvaf7n90jbG2KIJlkKDFZa8BffocrGEluND40PjJopBe
+h4ENrAIbxioIpS8vgwQNhTfjr6V9x/g8Rynjk2Pw9+Nb0PFXG/zcUw75bdmM
+vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
+                  
+                  "], {{0, 20.}, {20., 0}}, {0, 255}, ColorFunction -> 
+                  RGBColor], 
+                 BoxForm`ImageTag[
+                 "Byte", ColorSpace -> "RGB", Interleaving -> True, 
+                  MetaInformation -> <|
+                   "Comments" -> <|"Software" -> "Adobe ImageReady"|>|>], 
+                 Selectable -> False], DefaultBaseStyle -> "ImageGraphics", 
+                ImageSizeRaw -> {20., 20.}, 
+                PlotRange -> {{0, 20.}, {0, 20.}}], 
+               ButtonFunction :> ($CellContext`ff = $CellContext`GetFolders[
+                 NotebookDirectory[] <> "Measurements/"]), Appearance -> None,
+                Evaluator -> Automatic, Method -> "Preemptive"]}, 
+             "RowDefault"]}, {"\" \""}, {
+            TemplateBox[{
+              ButtonBox[
+              "\"Start\"", 
+               ButtonFunction :> ($CellContext`im = 
+                 False; $CellContext`status = 
+                 "Started"; $CellContext`imglist = {}; \
+$CellContext`resamplingC = 
+                 100; $CellContext`filename = $CellContext`folder <> 
+                  "/"; {$CellContext`dx, $CellContext`dy} = 
+                 Import[NotebookDirectory[] <> 
+                   "Measurements/" <> $CellContext`filename <> 
+                   "dxdy.mx"]; $CellContext`recstop = 
+                 Range[3, $CellContext`dy 3, 3]; 
+                Do[If[$CellContext`im, $CellContext`status = "Stopped!"; 
+                    Break[]]; $CellContext`progress = 
+                   Round[($CellContext`iii 100.)/$CellContext`dy, 
+                    0.1]; $CellContext`progresss = 
+                   ToString[$CellContext`progress]; $CellContext`pth = 
+                   NotebookDirectory[] <> 
+                    "Measurements/" <> $CellContext`filename <> ToString[
+                    Part[$CellContext`recstop, $CellContext`iii]] <> 
+                    ".wav"; $CellContext`signalout = 
+                   Import[$CellContext`pth]; $CellContext`data = Part[
+                    AudioData[$CellContext`signalout], 1]; $CellContext`ll = 
+                   Length[$CellContext`data]; $CellContext`half = 
+                   Floor[$CellContext`ll/2]; $CellContext`fw = 
+                   Part[$CellContext`data, 
+                    Span[1, $CellContext`half]]; $CellContext`bk = Reverse[
+                    Part[$CellContext`data, 
+                    Span[$CellContext`half, All]]]; $CellContext`fwl = 
+                   StandardDeviationFilter[
+                    Abs[$CellContext`fw - 1], 1000]; $CellContext`al = 
+                   ArrayResample[$CellContext`fwl, $CellContext`dx \
+$CellContext`resamplingC]; $CellContext`bkl = StandardDeviationFilter[
+                    Abs[$CellContext`bk - 1], 1000]; $CellContext`ar = 
+                   ArrayResample[$CellContext`bkl, $CellContext`dx \
+$CellContext`resamplingC]; 
+                  AppendTo[$CellContext`imglist, ($CellContext`ar + \
+$CellContext`al)/2]; Null, {$CellContext`iii, 
+                   Range[1, $CellContext`dy]}]; $CellContext`off = 
+                 Round[($CellContext`dx $CellContext`resamplingC) (5./
+                    100.)]; $CellContext`imgL = Part[$CellContext`imglist, 
+                   Span[2, All], 
+                   
+                   Span[$CellContext`off, $CellContext`dx \
+$CellContext`resamplingC - $CellContext`off]]; $CellContext`imagelist = 
+                 Map[TotalVariationFilter[
+                    Part[$CellContext`imgL, #]]& , 
+                   Range[1, 
+                    Length[$CellContext`imgL]]]; $CellContext`mm = 
+                 MinMax[$CellContext`imagelist]; $CellContext`ires = \
+($CellContext`imagelist - Part[$CellContext`mm, 1]) (1/(
+                   Part[$CellContext`mm, 2] - 
+                   Part[$CellContext`mm, 1])); $CellContext`resss = 
+                 ImageResize[
+                   Image[$CellContext`ires], {200, 
+                   200}]; $CellContext`OutImage = ImageResize[
+                   
+                   Colorize[$CellContext`resss, ColorFunction -> 
+                    "SunsetColors"], {200, 200}]; Null), 
+               ImageSize -> {70, 40}, Method -> "Queued", Appearance -> 
+               Automatic, Evaluator -> Automatic], 
+              ButtonBox[
+              "\"STOP\"", 
+               ButtonFunction :> ($CellContext`im = True; $CellContext`status = 
+                 "Stopped"; Null), Method -> "Preemptive", 
+               ImageSize -> {70, 40}, Appearance -> Automatic, Evaluator -> 
+               Automatic]}, "RowDefault"]}, {
+            TemplateBox[{"\"Status: \"", 
+              DynamicBox[
+               ToBoxes[
+                Refresh[$CellContext`status, UpdateInterval -> 0], 
+                StandardForm]]}, "RowDefault"]}, {
+            TemplateBox[{"\"Progress: \"", 
+              DynamicBox[
+               ToBoxes[
+                Refresh[$CellContext`progresss, UpdateInterval -> 0], 
+                StandardForm]], "\"%\""}, "RowDefault"]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+          "Column", 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+        "\"     \"", 
+        PanelBox[
+         DynamicBox[
+          ToBoxes[
+           Refresh[$CellContext`OutImage, UpdateInterval -> 0], 
+           StandardForm]], ImageSize -> {200, 200}]},
+       "RowDefault"]]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]],
+ CellMargins->{{0, 0}, {0, 0}},
+ CellBracketOptions->{"Color"->RGBColor[0.269993, 0.308507, 0.6]},
+ CellHorizontalScrolling->True,
+ PageBreakAbove->True,
+ PageBreakWithin->False,
+ ShowAutoStyles->True,
+ LineSpacing->{1.25, 0},
+ AutoItalicWords->{},
+ ScriptMinSize->9,
+ ShowStringCharacters->False,
+ FontFamily:>CurrentValue["PanelFontFamily"],
+ FontSize:>CurrentValue[
+  "PanelFontSize"],ExpressionUUID->"f6f050f8-ef3e-4631-8c47-f68aadd94fb3"]
+},
+WindowSize->All,
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowElements->{},
+WindowTitle->"Scanning Laser Microscope Controller",
+FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (February 4, 2022)",
+StyleDefinitions->"Palette.nb",
+ExpressionUUID->"a49790ae-803a-46cd-a232-edf527a2fe36"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[609, 21, 25736, 531, 916, InheritFromParent,ExpressionUUID->"f6f050f8-ef3e-4631-8c47-f68aadd94fb3",
+ PageBreakAbove->True,
+ PageBreakWithin->False]
+}
+]
+*)
+
+(* End of internal cache information *)
+
