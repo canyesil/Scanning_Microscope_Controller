@@ -20,4 +20,5 @@ Usage: Run Create_Controller_Palette.nb, that will create Mathematica Palette ap
 
 To do: Control circuit diagram will be uploaded.
 
-![alt text](https://github.com/icyesil/Scanning_Microscope_Controller/blob/main/Application.jpg?raw=true)
+![alt text](https://github.com/canyesil/Scanning_Microscope_Controller/blob/main/App_Window.png?raw=true)
+
