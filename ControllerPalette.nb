@@ -10,107 +10,103 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26822,        572]
-NotebookOptionsPosition[     26349,        554]
-NotebookOutlinePosition[     26809,        572]
-CellTagsIndexPosition[     26766,        569]
+NotebookDataLength[     31050,        650]
+NotebookOptionsPosition[     30577,        632]
+NotebookOutlinePosition[     31037,        650]
+CellTagsIndexPosition[     30994,        647]
 WindowTitle->Scanning Laser Microscope Controller
 WindowFrame->Palette*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
- TagBox[GridBox[{
-    {
-     PanelBox[
-      TagBox[GridBox[{
-         {
-          ButtonBox["\<\"Reset Settings\"\>",
-           Appearance->Automatic,
-           
-           ButtonFunction:>(ClearAll["Global`*"]; 
-            AudioStop[]; $CellContext`dx = 50; $CellContext`dy = 
-             50; $CellContext`ratio = 1; $CellContext`LaserP = 
-             127; $CellContext`step = 150; $CellContext`path = 
-             NotebookDirectory[] <> "ControllerPalette.nb"; SetDirectory[
-              NotebookDirectory[]]; 
-            Import[NotebookDirectory[] <> "Functions.m"]; $CellContext`img = 
-             Graphics[{
-                EdgeForm[Dashed], Transparent, 
-                Rectangle[]}]; 
-            Export[NotebookDirectory[] <> "dashed_area.png", 
-              Framed[$CellContext`img]]; $CellContext`imgpath = 
-             NotebookDirectory[] <> "dashed_area.png"; $CellContext`refresh = 
-             ImageResize[
-               Import[NotebookDirectory[] <> "VistalCO_refresh_icon_2.png"], {
-               20, 20}]; $CellContext`img = 
-             Import[$CellContext`imgpath]; $CellContext`xrn = \
-$CellContext`GetFiles["/dev/", "cu."]; $CellContext`onoff = 
-             0; $CellContext`OutImage = 
-             ConstantImage[0.6, {600, 600}]; $CellContext`status = 
-             "Ready"; $CellContext`progresss = "0"; $CellContext`progreS = 
-             "0"; Null),
-           Evaluator->Automatic,
-           Method->"Preemptive"]},
-         {
-          PanelBox[
-           TemplateBox[{
-             PanelBox[
-              TagBox[
-               GridBox[{{
-                  StyleBox["\"Scanning Settings\"", "Title", 20, 
-                   RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
-                  SliderBox[
-                   Dynamic[$CellContext`dx], {2, 150, 2}]}, {
-                  TemplateBox[{
-                    StyleBox[
-                    InterpretationBox[
+ TemplateBox[{
+   PanelBox[
+    TagBox[
+     GridBox[{{
+        ButtonBox[
+        "\"Reset Settings\"", 
+         ButtonFunction :> (ClearAll["Global`*"]; 
+          AudioStop[]; $CellContext`dx = 50; $CellContext`dy = 
+           50; $CellContext`ratio = 1; $CellContext`LaserP = 
+           127; $CellContext`step = 150; $CellContext`path = 
+           NotebookDirectory[] <> "ControllerPalette.nb"; SetDirectory[
+            NotebookDirectory[]]; 
+          Import[NotebookDirectory[] <> "Functions.m"]; $CellContext`img = 
+           Image[
+             Table[{1., 1., 1.}, 
+              Round[$CellContext`dx 3 $CellContext`ratio], 
+              Round[$CellContext`dy 3 $CellContext`ratio]]]; 
+          Export[NotebookDirectory[] <> "dashed_area.png", 
+            Framed[$CellContext`img]]; $CellContext`imgpath = 
+           NotebookDirectory[] <> "dashed_area.png"; $CellContext`refresh = 
+           ImageResize[
+             Import[NotebookDirectory[] <> "VistalCO_refresh_icon_2.png"], {
+             20, 20}]; $CellContext`xrn = $CellContext`GetFiles[
+            "/dev/", "cu."]; $CellContext`onoff = 0; $CellContext`OutImage = 
+           ConstantImage[0.6, {600, 600}]; $CellContext`status = 
+           Style["Ready", 14, Black]; $CellContext`progresss = 
+           Style["0", 14, Black]; $CellContext`progreS = 
+           Style["0", 14, Black]; Null), Appearance -> Automatic, Evaluator -> 
+         Automatic, Method -> "Preemptive"]}, {
+        PanelBox[
+         TemplateBox[{
+           PanelBox[
+            TagBox[
+             GridBox[{{
+                StyleBox["\"Scanning Settings\"", "Title", 20, 
+                 RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
+                SliderBox[
+                 Dynamic[$CellContext`dx], {2, 150, 2}]}, {
+                TemplateBox[{
+                  StyleBox[
+                   InterpretationBox[
                     Cell[
                     BoxData[
                     FormBox["\"dx: \"", TextForm]], "InlineText"], 
-                    Text["dx: "]], 12, StripOnInput -> False], 
-                    DynamicBox[
-                    ToBoxes[$CellContext`dx, StandardForm]]}, "RowDefault"]}, {
-                  SliderBox[
-                   Dynamic[$CellContext`dy], {2, 150, 2}]}, {
-                  TemplateBox[{
-                    StyleBox[
-                    InterpretationBox[
+                    Text["dx: "]], 14, StripOnInput -> False], 
+                  DynamicBox[
+                   ToBoxes[$CellContext`dx, StandardForm]]}, "RowDefault"]}, {
+               
+                SliderBox[
+                 Dynamic[$CellContext`dy], {2, 150, 2}]}, {
+                TemplateBox[{
+                  StyleBox[
+                   InterpretationBox[
                     Cell[
                     BoxData[
                     FormBox["\"dy: \"", TextForm]], "InlineText"], 
-                    Text["dy: "]], 12, StripOnInput -> False], 
-                    DynamicBox[
-                    ToBoxes[$CellContext`dy, StandardForm]]}, "RowDefault"]}, {
-                  SliderBox[
-                   Dynamic[$CellContext`ratio], {0.1, 3, 0.1}]}, {
-                  TemplateBox[{
-                    StyleBox[
-                    InterpretationBox[
+                    Text["dy: "]], 14, StripOnInput -> False], 
+                  DynamicBox[
+                   ToBoxes[$CellContext`dy, StandardForm]]}, "RowDefault"]}, {
+               
+                SliderBox[
+                 Dynamic[$CellContext`ratio], {0.1, 3, 0.1}]}, {
+                TemplateBox[{
+                  StyleBox[
+                   InterpretationBox[
                     Cell[
                     BoxData[
                     FormBox["\"Magnification: \"", TextForm]], "InlineText"], 
                     
-                    Text["Magnification: "]], 12, StripOnInput -> False], 
-                    DynamicBox[
-                    ToBoxes[$CellContext`ratio, StandardForm]]}, 
-                   "RowDefault"]}, {
-                  TemplateBox[{
-                    ButtonBox[
-                    "\"Apply\"", 
-                    ButtonFunction :> ($CellContext`cmretto = 
+                    Text["Magnification: "]], 14, StripOnInput -> False], 
+                  DynamicBox[
+                   ToBoxes[$CellContext`ratio, StandardForm]]}, 
+                 "RowDefault"]}, {
+                TemplateBox[{
+                  ButtonBox[
+                  "\"Apply\"", 
+                   ButtonFunction :> ($CellContext`cmretto = 
                     Table[0, $CellContext`dx, $CellContext`dy]; \
-$CellContext`img = ImageResize[
-                    Graphics[{
-                    EdgeForm[Dashed], Transparent, 
-                    Rectangle[]}], {
+$CellContext`img = Image[
+                    Table[{1., 1., 1.}, 
                     Round[$CellContext`dx 3 $CellContext`ratio], 
-                    Round[$CellContext`dy 3 $CellContext`ratio]}]; Null), 
-                    ImageSize -> {80, 27}, Appearance -> Automatic, Evaluator -> 
-                    Automatic, Method -> "Preemptive"], 
-                    ButtonBox[
-                    "\"Process\"", 
-                    ButtonFunction :> ($CellContext`dim = {$CellContext`dx, \
+                    Round[$CellContext`dy 3 $CellContext`ratio]]]; Null), 
+                   ImageSize -> {80, 27}, Appearance -> Automatic, Evaluator -> 
+                   Automatic, Method -> "Preemptive"], 
+                  ButtonBox[
+                  "\"Process\"", 
+                   ButtonFunction :> ($CellContext`dim = {$CellContext`dx, \
 $CellContext`dy}; $CellContext`lines = \
 $CellContext`process2[$CellContext`dim, $CellContext`cmretto]; \
 $CellContext`plt = ListPlot[
@@ -131,37 +127,27 @@ $CellContext`dx, $CellContext`dy]);
                     Export[NotebookDirectory[] <> 
                     "commngap.mx", $CellContext`comngap, "MX"]; 
                     ImageSize -> {80, 27}), Appearance -> Automatic, 
-                    Evaluator -> Automatic, Method -> "Preemptive"]}, 
-                   "RowDefault"]}}, 
-                GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-                "Column", 
-                GridBoxItemSize -> {
-                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
-               "Column"], ImageSize -> {250, 250}], 
-             PanelBox[
-              DynamicBox[
-               ToBoxes[
-                Refresh[$CellContext`img, UpdateInterval -> 0], 
-                StandardForm]], ImageSize -> {175, 250}]},
-            "RowDefault"]]},
-         {
-          PanelBox[
-           TagBox[GridBox[{
-              {
-               StyleBox["\<\"USB-Serial Device\"\>", "Title",
-                StripOnInput->False,
-                LineColor->RGBColor[0.216, 0.659, 0.675],
-                FrontFaceColor->RGBColor[0.216, 0.659, 0.675],
-                BackFaceColor->RGBColor[0.216, 0.659, 0.675],
-                GraphicsColor->RGBColor[0.216, 0.659, 0.675],
-                FontSize->20,
-                FontColor->RGBColor[0.216, 0.659, 0.675]]},
-              {
-               TemplateBox[{
-                 ButtonBox[
-                  GraphicsBox[
-                   TagBox[
-                    RasterBox[CompressedData["
+                   Evaluator -> Automatic, Method -> "Preemptive"]}, 
+                 "RowDefault"]}}, GridBoxAlignment -> {"Columns" -> {{Left}}},
+               DefaultBaseStyle -> "Column", 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+             "Column"], ImageSize -> {250, 250}], 
+           PanelBox[
+            DynamicBox[
+             ToBoxes[
+              Refresh[$CellContext`img, UpdateInterval -> 0], StandardForm]], 
+            ImageSize -> {175, 250}]}, "RowDefault"]]}, {
+        PanelBox[
+         TagBox[
+          GridBox[{{
+             StyleBox["\"USB-Serial Device\"", "Title", 20, 
+              RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
+             TemplateBox[{
+               ButtonBox[
+                GraphicsBox[
+                 TagBox[
+                  RasterBox[CompressedData["
 1:eJx1lAdQFGcUgN/t7t3RFLhDQDw4EAEpSlXqIb1IDXhiAhpBSixBUZqKIko0
 GFBACBIQKSGHjEgJCAQVIlgiopKoQSxoBnXArgMCt7d/9g50HCeZnW/f/juz
 37z/f++tXtTmkFgMALbJ0beQyBTXrVsjt4eq0Ath/Lb1cfEx0b7xiTFxMVvt
@@ -194,206 +180,178 @@ V44CX04MYyUnGg/mROIeNI6cSELAiSJCuNHEt2qxeDInmkjU2Igf0Nkit4cR
 Bosy6lKl8yGbkSlySvaf7n90jbG2KIJlkKDFZa8BffocrGEluND40PjJopBe
 h4ENrAIbxioIpS8vgwQNhTfjr6V9x/g8Rynjk2Pw9+Nb0PFXG/zcUw75bdmM
 vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
-                    
-                    "], {{0, 20.}, {20., 0}}, {0, 255}, ColorFunction -> 
-                    RGBColor], 
-                    BoxForm`ImageTag[
-                    "Byte", ColorSpace -> "RGB", Interleaving -> True, 
-                    MetaInformation -> <|
+                   
+                   "], {{0, 20.}, {20., 0}}, {0, 255}, ColorFunction -> 
+                   RGBColor], 
+                  BoxForm`ImageTag[
+                  "Byte", ColorSpace -> "RGB", Interleaving -> True, 
+                   MetaInformation -> <|
                     "Comments" -> <|"Software" -> "Adobe ImageReady"|>|>], 
-                    Selectable -> False], DefaultBaseStyle -> "ImageGraphics",
-                    ImageSizeRaw -> {20., 20.}, 
-                   PlotRange -> {{0, 20.}, {0, 20.}}], 
-                  ButtonFunction :> ($CellContext`xrn = $CellContext`GetFiles[
-                    "/dev/", "cu."]), Appearance -> None, Evaluator -> 
-                  Automatic, Method -> "Preemptive"], 
-                 PopupMenuBox[
-                  Dynamic[$CellContext`xrn], {
-                  "/dev/cu.Bluetooth-Incoming-Port" -> 
-                   "\"/dev/cu.Bluetooth-Incoming-Port\"", 
-                   "/dev/cu.wlan-debug" -> "\"/dev/cu.wlan-debug\""}], 
-                 "\"   \"", 
-                 ButtonBox[
-                 "\"ON\"", ButtonFunction :> 
-                  If[$CellContext`onoff == 
-                    0, $CellContext`c = 
-                    RGBColor[0, 1, 0, 0.5]; $CellContext`dev = 
-                    DeviceOpen[
+                  Selectable -> False], DefaultBaseStyle -> "ImageGraphics", 
+                 ImageSizeRaw -> {20., 20.}, 
+                 PlotRange -> {{0, 20.}, {0, 20.}}], 
+                ButtonFunction :> ($CellContext`fd = $CellContext`GetFiles[
+                  "/dev/", "cu."]), Appearance -> None, Evaluator -> 
+                Automatic, Method -> "Preemptive"], 
+               DynamicBox[
+                ToBoxes[
+                 PopupMenu[
+                  Dynamic[$CellContext`xrn], $CellContext`fd], StandardForm]],
+                "\"   \"", 
+               ButtonBox[
+               "\"ON\"", ButtonFunction :> 
+                If[$CellContext`onoff == 
+                  0, $CellContext`c = 
+                   RGBColor[0, 1, 0, 0.5]; $CellContext`dev = 
+                   DeviceOpen[
                     "Serial", {$CellContext`xrn, "BaudRate" -> 
                     9600}]; $CellContext`onoff = 1, $CellContext`c = 
-                    RGBColor[0.9117, 0.396, 0.0274]; 
-                    DeviceClose[$CellContext`dev]; $CellContext`onoff = 0; 
-                    Null], Background -> Dynamic[$CellContext`c], 
-                  ImageSize -> {50, 50}, Appearance -> Automatic, Evaluator -> 
-                  Automatic, Method -> "Preemptive"], "\" \""},
-                "RowDefault"]},
-              {"\<\" \"\>"},
-              {
-               TagBox[GridBox[{
-                  {
-                   TemplateBox[{
-                    SliderBox[
+                   RGBColor[0.9117, 0.396, 0.0274]; 
+                  DeviceClose[$CellContext`dev]; $CellContext`onoff = 0; 
+                  Null], Background -> Dynamic[$CellContext`c], 
+                ImageSize -> {50, 50}, Appearance -> Automatic, Evaluator -> 
+                Automatic, Method -> "Preemptive"], "\" \""}, 
+              "RowDefault"]}, {"\" \""}, {
+             TagBox[
+              GridBox[{{
+                 TemplateBox[{
+                   SliderBox[
                     Dynamic[$CellContext`n], {0, 10, 0.1}], 
-                    DynamicBox[
-                    ToBoxes[$CellContext`n, StandardForm]]},
-                    "RowDefault"]},
-                  {
-                   ButtonBox[
-                    StyleBox["\<\"Set Laser Power (Idle)\"\>", "Title",
-                    StripOnInput->False,
-                    LineColor->RGBColor[0.216, 0.659, 0.675],
-                    FrontFaceColor->RGBColor[0.216, 0.659, 0.675],
-                    BackFaceColor->RGBColor[0.216, 0.659, 0.675],
-                    GraphicsColor->RGBColor[0.216, 0.659, 0.675],
-                    FontSize->14,
-                    FontColor->RGBColor[0.216, 0.659, 0.675]],
-                    Appearance->Automatic,
-                    
-                    ButtonFunction:>(
-                    DeviceWriteBuffer[$CellContext`dev, StringPadLeft[
-                    ToString[$CellContext`n], 3, "0"] <> "r0m2l0\n"]; 
-                    Pause[0.2]),
-                    Evaluator->Automatic,
-                    Method->"Preemptive"]}
-                 },
-                 DefaultBaseStyle->"Column",
-                 GridBoxAlignment->{"Columns" -> {{Left}}},
-                 
-                 GridBoxItemSize->{
-                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-                "Column"]},
-              {"\<\"  \"\>"},
-              {"\<\"  \"\>"},
-              {
-               StyleBox["\<\"Writing Parameters\"\>", "Title",
-                StripOnInput->False,
-                LineColor->RGBColor[0.216, 0.659, 0.675],
-                FrontFaceColor->RGBColor[0.216, 0.659, 0.675],
-                BackFaceColor->RGBColor[0.216, 0.659, 0.675],
-                GraphicsColor->RGBColor[0.216, 0.659, 0.675],
-                FontSize->20,
-                FontColor->RGBColor[0.216, 0.659, 0.675]]},
-              {
-               SliderBox[Dynamic[$CellContext`LaserP], {0, 255, 1}]},
-              {
-               TemplateBox[{
-                 StyleBox[
-                  InterpretationBox[
-                   Cell[
-                    BoxData[
-                    FormBox["\"Laser Power(%): \"", TextForm]], "InlineText"], 
-                   Text["Laser Power(%): "]], 12, StripOnInput -> False], 
-                 DynamicBox[
-                  ToBoxes[$CellContext`LaserP, StandardForm]]},
-                "RowDefault"]},
-              {
-               SliderBox[Dynamic[$CellContext`step], {0, 1000, 10}]},
-              {
-               TemplateBox[{
-                 StyleBox[
-                  InterpretationBox[
-                   Cell[
-                    BoxData[
-                    FormBox["\"Step interval (ms): \"", TextForm]], 
-                    "InlineText"], 
-                   Text["Step interval (ms): "]], 12, StripOnInput -> False], 
-                 
-                 DynamicBox[
-                  ToBoxes[$CellContext`step, StandardForm]]},
-                "RowDefault"]},
-              {
-               TemplateBox[{
+                   DynamicBox[
+                    ToBoxes[$CellContext`n, StandardForm]]}, "RowDefault"]}, {
+                
                  ButtonBox[
-                 "\"RUN\"", 
-                  ButtonFunction :> ($CellContext`t = 
-                    False; $CellContext`fold = 
-                    "Signal_out_" <> StringReplace[
+                  StyleBox["\"Set Laser Power (Idle)\"", "Title", 14, 
+                   RGBColor[0.216, 0.659, 0.675], StripOnInput -> False], 
+                  ButtonFunction :> (
+                   DeviceWriteBuffer[$CellContext`dev, StringPadLeft[
+                    ToString[$CellContext`n], 3, "0"] <> "r0m2l0\n"]; 
+                   Pause[0.2]), Appearance -> Automatic, Evaluator -> 
+                  Automatic, Method -> "Preemptive"]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+               "Column", 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+              "Column"]}, {"\"  \""}, {"\"  \""}, {
+             StyleBox["\"Writing Parameters\"", "Title", 20, 
+              RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
+             SliderBox[
+              Dynamic[$CellContext`LaserP], {0, 255, 1}]}, {
+             TemplateBox[{
+               StyleBox[
+                InterpretationBox[
+                 Cell[
+                  BoxData[
+                   FormBox["\"Laser Power(%): \"", TextForm]], "InlineText"], 
+                 
+                 Text["Laser Power(%): "]], 14, StripOnInput -> False], 
+               DynamicBox[
+                ToBoxes[$CellContext`LaserP, StandardForm]]}, "RowDefault"]}, {
+             SliderBox[
+              Dynamic[$CellContext`step], {0, 1000, 10}]}, {
+             TemplateBox[{
+               StyleBox[
+                InterpretationBox[
+                 Cell[
+                  BoxData[
+                   FormBox["\"Step interval (ms): \"", TextForm]], 
+                  "InlineText"], 
+                 Text["Step interval (ms): "]], 14, StripOnInput -> False], 
+               DynamicBox[
+                ToBoxes[$CellContext`step, StandardForm]]}, "RowDefault"]}, {
+             TemplateBox[{
+               ButtonBox[
+               "\"RUN\"", 
+                ButtonFunction :> ($CellContext`t = False; $CellContext`ddy = 
+                  1; $CellContext`fold = "Signal_out_" <> StringReplace[
                     DateString[], {" " -> "_", ":" -> "-"}]; 
-                   CreateDirectory[
-                    NotebookDirectory[] <> 
-                    "Measurements/" <> $CellContext`fold]; 
-                   Export[NotebookDirectory[] <> 
-                    "Measurements/" <> $CellContext`fold <> 
-                    "/dxdy.mx", {$CellContext`dx, $CellContext`dy}]; \
+                 CreateDirectory[
+                  NotebookDirectory[] <> 
+                   "Measurements/" <> $CellContext`fold]; 
+                 Export[NotebookDirectory[] <> 
+                   "Measurements/" <> $CellContext`fold <> 
+                   "/dxdy.mx", {$CellContext`dx, $CellContext`dy}]; \
 {$CellContext`comm, $CellContext`gap} = 
-                    Import[NotebookDirectory[] <> 
+                  Import[NotebookDirectory[] <> 
                     "commngap.mx"]; $CellContext`temp = 
-                    "Running..."; $CellContext`astream = 
-                    AudioStream[$DefaultAudioInputDevice]; $CellContext`len = 
-                    Length[$CellContext`comm]; $CellContext`recstart = 
-                    Range[1, $CellContext`len, 3]; $CellContext`recstop = 
-                    Range[3, $CellContext`len, 3]; 
-                   For[$CellContext`ii = 
-                    1, $CellContext`ii <= $CellContext`len, 
-                    
-                    Increment[$CellContext`ii], $CellContext`progreS = 
-                    ToString[($CellContext`ii 100)/$CellContext`len]; If[
+                  Style["Running... ", 14, Black]; $CellContext`astream = 
+                  AudioStream[$DefaultAudioInputDevice]; $CellContext`len = 
+                  Length[$CellContext`comm]; $CellContext`recstart = 
+                  Range[1, $CellContext`len, 3]; $CellContext`recstop = 
+                  Range[3, $CellContext`len, 3]; 
+                 For[$CellContext`ii = 1, $CellContext`ii <= $CellContext`len, 
+                   Increment[$CellContext`ii], $CellContext`progreS = Style[
+                    ToString[($CellContext`ii 100.)/$CellContext`len], 14, 
+                    Black]; If[
                     MemberQ[$CellContext`recstop, $CellContext`ii], 
                     AudioStop[]; $CellContext`aud = 
                     Audio[$CellContext`recording]; 
                     Export[NotebookDirectory[] <> 
                     "Measurements/" <> $CellContext`fold <> "/" <> 
                     ToString[$CellContext`ii] <> ".wav", $CellContext`aud]; 
-                    Pause[0.1]; Null]; 
-                    If[$CellContext`t, $CellContext`temp = "Stopped!"; 
-                    Break[]]; DeviceWriteBuffer[$CellContext`dev, 
-                    Part[$CellContext`comm, $CellContext`ii]]; If[
+                    Pause[0.5]; Null]; 
+                   If[$CellContext`t, $CellContext`temp = 
+                    Style["Stopped", 14, Black]; Break[]]; If[
                     
                     MemberQ[$CellContext`recstart, $CellContext`ii], \
-$CellContext`recording = AudioRecord[$CellContext`astream]]; 
-                    Pause[Part[$CellContext`gap, $CellContext`ii] 10^(-3) + 
-                    0.2]; Null]; $CellContext`temp = "Finished."; Null), 
-                  ImageSize -> {70, 40}, Method -> "Queued", Appearance -> 
-                  Automatic, Evaluator -> Automatic], 
-                 ButtonBox[
-                 "\"STOP\"", 
-                  ButtonFunction :> ($CellContext`t = True; $CellContext`temp = 
-                    "Stopped"; AudioStop[]; Null), Method -> "Preemptive", 
-                  ImageSize -> {70, 40}, Appearance -> Automatic, Evaluator -> 
-                  Automatic]},
-                "RowDefault"]},
-              {
-               DynamicBox[ToBoxes[
-                 Refresh[$CellContext`temp, UpdateInterval -> 0], 
-                 StandardForm],
-                ImageSizeCache->{54., {1., 8.}}]},
-              {
-               TemplateBox[{"\"Progress: \"", 
-                 DynamicBox[
-                  ToBoxes[
-                   Refresh[$CellContext`progreS, UpdateInterval -> 0], 
-                   StandardForm]], "\"%\""},
-                "RowDefault"]}
-             },
-             DefaultBaseStyle->"Column",
-             GridBoxAlignment->{"Columns" -> {{Left}}},
-             
-             GridBoxItemSize->{
-              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-            "Column"],
-           ImageSize->{480, 370}]}
-        },
-        DefaultBaseStyle->"Column",
-        GridBoxAlignment->{"Columns" -> {{Left}}},
-        GridBoxItemSize->{
-         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-       "Column"]]},
-    {
-     PanelBox[
-      TemplateBox[{
+$CellContext`imgd = ImageData[$CellContext`img]; Part[$CellContext`imgd, 
+                    Span[$CellContext`ddy, $CellContext`ddy + 3]] = 
+                    Part[$CellContext`imgd, 
+                    Span[$CellContext`ddy, $CellContext`ddy + 3]] 
+                    0; $CellContext`img = Image[$CellContext`imgd]; 
+                    AddTo[$CellContext`ddy, 3]; $CellContext`recording = 
+                    AudioRecord[$CellContext`astream]; Null]; 
+                   DeviceWriteBuffer[$CellContext`dev, 
+                    Part[$CellContext`comm, $CellContext`ii]]; 
+                   Pause[Part[$CellContext`gap, $CellContext`ii] 10^(-3) + 
+                    0.2]; Null]; $CellContext`temp = 
+                  Style["Finished", 14, Black]; Null), ImageSize -> {70, 40}, 
+                Method -> "Queued", Appearance -> Automatic, Evaluator -> 
+                Automatic], 
+               ButtonBox[
+               "\"STOP\"", 
+                ButtonFunction :> ($CellContext`t = True; $CellContext`temp = 
+                  Style["Stopped", 14, Black]; AudioStop[]; Null), Method -> 
+                "Preemptive", ImageSize -> {70, 40}, Appearance -> Automatic, 
+                Evaluator -> Automatic]}, "RowDefault"]}, {
+             DynamicBox[
+              ToBoxes[
+               Refresh[$CellContext`temp, UpdateInterval -> 0], 
+               StandardForm]]}, {
+             TemplateBox[{
+               StyleBox["\"Progress: \"", 14, 
+                GrayLevel[0], StripOnInput -> False], 
+               DynamicBox[
+                ToBoxes[
+                 Refresh[$CellContext`progreS, UpdateInterval -> 0], 
+                 StandardForm]], 
+               StyleBox["\" %\"", 14, 
+                GrayLevel[0], StripOnInput -> False]}, "RowDefault"]}}, 
+           GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+           "Column", 
+           GridBoxItemSize -> {
+            "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
+         ImageSize -> {445, 400}]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+      "Column", 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]], 
+   TagBox[
+    GridBox[{{
+       PanelBox[
         TagBox[
          GridBox[{{
             StyleBox["\"Image Process\"", "Title", 20, 
              RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
            "\" \""}, {
-            InterpretationBox[
-             Cell[
-              BoxData[
-               FormBox["\"Choose the folder\"", TextForm]], "InlineText"], 
-             Text["Choose the folder"]]}, {
+            StyleBox["\"Choose folder containing scan records\"", 14, 
+             GrayLevel[0], StripOnInput -> False]}, {
             TemplateBox[{
-              PopupMenuBox[
-               Dynamic[$CellContext`folder], {}], 
+              DynamicBox[
+               ToBoxes[
+                PopupMenu[
+                 Dynamic[$CellContext`folder], $CellContext`ff], 
+                StandardForm]], 
               ButtonBox[
                GraphicsBox[
                 TagBox[
@@ -444,12 +402,125 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                  NotebookDirectory[] <> "Measurements/"]), Appearance -> None,
                 Evaluator -> Automatic, Method -> "Preemptive"]}, 
              "RowDefault"]}, {"\" \""}, {
+            TagBox[
+             GridBox[{{
+                TagBox[
+                 GridBox[{{
+                    TagBox[
+                    GridBox[{{
+                    TemplateBox[{
+                    StyleBox[
+                    InterpretationBox[
+                    Cell[
+                    BoxData[
+                    FormBox["\"Moving Avarage Size (Number): \"", TextForm]], 
+                    "InlineText"], 
+                    Text["Moving Avarage Size (Number): "]], 14, StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`MovAv, StandardForm]]}, 
+                    "RowDefault"]}, {
+                    SliderBox[
+                    Dynamic[$CellContext`MovAv], {10, 500, 10}]}}, 
+                    GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    DefaultBaseStyle -> "Column", 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+                    "Column"]}, {
+                    TagBox[
+                    GridBox[{{
+                    TemplateBox[{
+                    StyleBox[
+                    InterpretationBox[
+                    Cell[
+                    BoxData[
+                    FormBox["\"Laser Pulse Frequency (Hz): \"", TextForm]], 
+                    "InlineText"], 
+                    Text["Laser Pulse Frequency (Hz): "]], 14, StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`CenterFreq, StandardForm]]}, 
+                    "RowDefault"]}, {
+                    SliderBox[
+                    Dynamic[$CellContext`CenterFreq], {1, 10000, 1}]}}, 
+                    GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    DefaultBaseStyle -> "Column", 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+                    "Column"]}, {
+                    TagBox[
+                    GridBox[{{
+                    TemplateBox[{
+                    StyleBox[
+                    InterpretationBox[
+                    Cell[
+                    BoxData[
+                    FormBox["\"Filter Bandwidth (Hz): \"", TextForm]], 
+                    "InlineText"], 
+                    Text["Filter Bandwidth (Hz): "]], 14, StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    ToBoxes[$CellContext`Bandwidth, StandardForm]]}, 
+                    "RowDefault"]}, {
+                    SliderBox[
+                    Dynamic[$CellContext`Bandwidth], {1, 300, 1}]}}, 
+                    GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    DefaultBaseStyle -> "Column", 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+                    "Column"]}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+                 "Column"]}, {
+                
+                TemplateBox[{
+                 "\"                                                      \"", 
+                  ButtonBox[
+                  "\"Save\"", 
+                   ButtonFunction :> ($CellContext`confassoc[
+                    "LaserPulseFrequency"] = $CellContext`CenterFreq; \
+$CellContext`confassoc[
+                    "FrequencyGap"] = $CellContext`Bandwidth; \
+$CellContext`confassoc[
+                    "MovingAvarage"] = $CellContext`MovAv; \
+$CellContext`conflist = Map[{
+                    Part[
+                    Keys[
+                    Normal[$CellContext`confassoc]], #], 
+                    Part[
+                    Values[
+                    Normal[$CellContext`confassoc]], #]}& , 
+                    Range[1, 
+                    Length[
+                    Part[$CellContext`conf, 1]]]]; 
+                    Export[NotebookDirectory[] <> 
+                    "main.conf", $CellContext`conflist, "CSV"]; Null), 
+                   Appearance -> Automatic, Evaluator -> Automatic, Method -> 
+                   "Preemptive"]}, "RowDefault"]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+              "Column", 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+             "Column"]}, {
             TemplateBox[{
               ButtonBox[
-              "\"Start\"", 
-               ButtonFunction :> ($CellContext`im = 
+              "\"Start\"", ButtonFunction :> ($CellContext`conf = Map[Part[
+                    Import[NotebookDirectory[] <> "main.conf"], 
+                    Span[1, All], #]& , {1, 2}]; $CellContext`confassoc = 
+                 AssociationThread[
+                   Part[$CellContext`conf, 1], 
+                   Part[$CellContext`conf, 2]]; $CellContext`CenterFreq = 
+                 ToExpression[
+                   $CellContext`confassoc[
+                   "LaserPulseFrequency"]]; $CellContext`Bandwidth = 
+                 ToExpression[
+                   $CellContext`confassoc[
+                   "FrequencyGap"]]; $CellContext`MovAv = ToExpression[
+                   $CellContext`confassoc["MovingAvarage"]]; $CellContext`im = 
                  False; $CellContext`status = 
-                 "Started"; $CellContext`imglist = {}; \
+                 Style["Started", 14, 
+                   Black]; $CellContext`imglist = {}; \
 $CellContext`resamplingC = 
                  100; $CellContext`filename = $CellContext`folder <> 
                   "/"; {$CellContext`dx, $CellContext`dy} = 
@@ -457,87 +528,94 @@ $CellContext`resamplingC =
                    "Measurements/" <> $CellContext`filename <> 
                    "dxdy.mx"]; $CellContext`recstop = 
                  Range[3, $CellContext`dy 3, 3]; 
-                Do[If[$CellContext`im, $CellContext`status = "Stopped!"; 
+                Do[If[$CellContext`im, $CellContext`status = 
+                    Style["Stopped", 14, Black]; 
                     Break[]]; $CellContext`progress = 
                    Round[($CellContext`iii 100.)/$CellContext`dy, 
-                    0.1]; $CellContext`progresss = 
-                   ToString[$CellContext`progress]; $CellContext`pth = 
+                    0.1]; $CellContext`progresss = Style[
+                    ToString[$CellContext`progress], 14, 
+                    Black]; $CellContext`pth = 
                    NotebookDirectory[] <> 
                     "Measurements/" <> $CellContext`filename <> ToString[
                     Part[$CellContext`recstop, $CellContext`iii]] <> 
                     ".wav"; $CellContext`signalout = 
-                   Import[$CellContext`pth]; $CellContext`data = Part[
-                    AudioData[$CellContext`signalout], 1]; $CellContext`ll = 
+                   Import[$CellContext`pth]; $CellContext`bp = 
+                   BandpassFilter[$CellContext`signalout, {
+                    
+                    Quantity[$CellContext`CenterFreq - $CellContext`Bandwidth,
+                     "Hertz"], 
+                    
+                    Quantity[$CellContext`CenterFreq + $CellContext`Bandwidth,
+                     "Hertz"]}]; $CellContext`data = Abs[
+                    ArrayResample[
+                    Part[
+                    AudioData[$CellContext`bp], 1], 50000]]; $CellContext`ll = 
                    Length[$CellContext`data]; $CellContext`half = 
                    Floor[$CellContext`ll/2]; $CellContext`fw = 
                    Part[$CellContext`data, 
                     Span[1, $CellContext`half]]; $CellContext`bk = Reverse[
                     Part[$CellContext`data, 
-                    Span[$CellContext`half, All]]]; $CellContext`fwl = 
-                   StandardDeviationFilter[
-                    Abs[$CellContext`fw - 1], 1000]; $CellContext`al = 
-                   ArrayResample[$CellContext`fwl, $CellContext`dx \
-$CellContext`resamplingC]; $CellContext`bkl = StandardDeviationFilter[
-                    Abs[$CellContext`bk - 1], 1000]; $CellContext`ar = 
-                   ArrayResample[$CellContext`bkl, $CellContext`dx \
-$CellContext`resamplingC]; 
-                  AppendTo[$CellContext`imglist, ($CellContext`ar + \
-$CellContext`al)/2]; Null, {$CellContext`iii, 
-                   Range[1, $CellContext`dy]}]; $CellContext`off = 
-                 Round[($CellContext`dx $CellContext`resamplingC) (5./
-                    100.)]; $CellContext`imgL = Part[$CellContext`imglist, 
-                   Span[2, All], 
-                   
-                   Span[$CellContext`off, $CellContext`dx \
-$CellContext`resamplingC - $CellContext`off]]; $CellContext`imagelist = 
-                 Map[TotalVariationFilter[
-                    Part[$CellContext`imgL, #]]& , 
-                   Range[1, 
-                    Length[$CellContext`imgL]]]; $CellContext`mm = 
-                 MinMax[$CellContext`imagelist]; $CellContext`ires = \
-($CellContext`imagelist - Part[$CellContext`mm, 1]) (1/(
+                    Span[$CellContext`half + 1, 
+                    All]]]; $CellContext`out = ($CellContext`fw + \
+$CellContext`bk)/2.; $CellContext`ofset = 
+                   Round[Length[$CellContext`out] 0.05]; 
+                  AppendTo[$CellContext`imglist, 
+                    MovingAverage[
+                    Part[$CellContext`out, 
+                    
+                    Span[$CellContext`ofset, -$CellContext`ofset]], \
+$CellContext`MovAv]], {$CellContext`iii, 
+                   Range[2, $CellContext`dy]}]; $CellContext`mm = 
+                 MinMax[$CellContext`imglist]; $CellContext`ires = \
+($CellContext`imglist - Part[$CellContext`mm, 1]) (1/(
                    Part[$CellContext`mm, 2] - 
                    Part[$CellContext`mm, 1])); $CellContext`resss = 
                  ImageResize[
-                   Image[$CellContext`ires], {200, 
-                   200}]; $CellContext`OutImage = ImageResize[
-                   
-                   Colorize[$CellContext`resss, ColorFunction -> 
-                    "SunsetColors"], {200, 200}]; Null), 
+                   Image[$CellContext`ires], {400, 
+                   400}]; $CellContext`OutImage = Sharpen[
+                   ImageResize[
+                    
+                    Colorize[$CellContext`resss, ColorFunction -> 
+                    "SunsetColors"], {300, 300}]]; Null), 
                ImageSize -> {70, 40}, Method -> "Queued", Appearance -> 
                Automatic, Evaluator -> Automatic], 
               ButtonBox[
               "\"STOP\"", 
                ButtonFunction :> ($CellContext`im = True; $CellContext`status = 
-                 "Stopped"; Null), Method -> "Preemptive", 
+                 Style["Stopped", 14, Black]; Null), Method -> "Preemptive", 
                ImageSize -> {70, 40}, Appearance -> Automatic, Evaluator -> 
                Automatic]}, "RowDefault"]}, {
-            TemplateBox[{"\"Status: \"", 
+            TemplateBox[{
+              StyleBox["\"Status: \"", 14, 
+               GrayLevel[0], StripOnInput -> False], 
               DynamicBox[
                ToBoxes[
                 Refresh[$CellContext`status, UpdateInterval -> 0], 
                 StandardForm]]}, "RowDefault"]}, {
-            TemplateBox[{"\"Progress: \"", 
+            TemplateBox[{
+              StyleBox["\"Progress: \"", 14, 
+               GrayLevel[0], StripOnInput -> False], 
               DynamicBox[
                ToBoxes[
                 Refresh[$CellContext`progresss, UpdateInterval -> 0], 
-                StandardForm]], "\"%\""}, "RowDefault"]}}, 
+                StandardForm]], 
+              StyleBox["\" %\"", 14, 
+               GrayLevel[0], StripOnInput -> False]}, "RowDefault"]}}, 
           GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
           "Column", 
           GridBoxItemSize -> {
            "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
-        "\"     \"", 
-        PanelBox[
-         DynamicBox[
-          ToBoxes[
-           Refresh[$CellContext`OutImage, UpdateInterval -> 0], 
-           StandardForm]], ImageSize -> {200, 200}]},
-       "RowDefault"]]}
-   },
-   DefaultBaseStyle->"Column",
-   GridBoxAlignment->{"Columns" -> {{Left}}},
-   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-  "Column"]],
+        ImageSize -> {380, 380}]}, {
+       PanelBox[
+        DynamicBox[
+         ToBoxes[
+          Refresh[$CellContext`OutImage, UpdateInterval -> 0], StandardForm]],
+         ImageSize -> {320, 320}]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+     "Column", 
+     GridBoxItemSize -> {
+      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+  "RowDefault"]],
  CellMargins->{{0, 0}, {0, 0}},
  CellBracketOptions->{"Color"->RGBColor[0.269993, 0.308507, 0.6]},
  CellHorizontalScrolling->True,
@@ -550,7 +628,7 @@ $CellContext`resamplingC - $CellContext`off]]; $CellContext`imagelist =
  ShowStringCharacters->False,
  FontFamily:>CurrentValue["PanelFontFamily"],
  FontSize:>CurrentValue[
-  "PanelFontSize"],ExpressionUUID->"f6f050f8-ef3e-4631-8c47-f68aadd94fb3"]
+  "PanelFontSize"],ExpressionUUID->"46e1cde5-2e6d-4b34-93e7-d237108fde64"]
 },
 WindowSize->All,
 WindowMargins->{{Automatic, 0}, {Automatic, 0}},
@@ -558,7 +636,7 @@ WindowElements->{},
 WindowTitle->"Scanning Laser Microscope Controller",
 FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (February 4, 2022)",
 StyleDefinitions->"Palette.nb",
-ExpressionUUID->"a49790ae-803a-46cd-a232-edf527a2fe36"
+ExpressionUUID->"1df8d790-be7d-4d66-b565-e89887419b6a"
 ]
 (* End of Notebook Content *)
 
@@ -571,7 +649,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[609, 21, 25736, 531, 916, InheritFromParent,ExpressionUUID->"f6f050f8-ef3e-4631-8c47-f68aadd94fb3",
+Cell[609, 21, 29964, 609, 724, InheritFromParent,ExpressionUUID->"46e1cde5-2e6d-4b34-93e7-d237108fde64",
  PageBreakAbove->True,
  PageBreakWithin->False]
 }
