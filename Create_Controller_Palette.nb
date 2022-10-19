@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     74080,       1460]
-NotebookOptionsPosition[     73685,       1445]
-NotebookOutlinePosition[     74123,       1462]
-CellTagsIndexPosition[     74080,       1459]
+NotebookDataLength[     78259,       1540]
+NotebookOptionsPosition[     77800,       1524]
+NotebookOutlinePosition[     78302,       1542]
+CellTagsIndexPosition[     78259,       1539]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -122,10 +122,21 @@ Cell[BoxData[{
        RowBox[{"20", ",", "20"}], "}"}]}], "]"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"xrn", "=", 
-   RowBox[{"GetFiles", "[", 
-    RowBox[{"\"\</dev/\>\"", ",", "\"\<cu.\>\""}], "]"}]}], 
+  RowBox[{"inputDev", "=", "$DefaultAudioInputDevice"}], 
   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fd", "=", 
+   RowBox[{"GetFiles", "[", 
+    RowBox[{"\"\</dev/\>\"", ",", "\"\<*usb*\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ff", "=", " ", 
+    RowBox[{"GetFolders", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<Measurements/\>\""}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"onoff", "=", "0"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -178,7 +189,7 @@ Cell[BoxData[{
                  RowBox[{
                   RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
                   "\"\<ControllerPalette.nb\>\""}]}], ";", 
-                "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
                 RowBox[{"SetDirectory", "[", 
                  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
                 "\[IndentingNewLine]", 
@@ -219,11 +230,54 @@ Cell[BoxData[{
                     "\"\<VistalCO_refresh_icon_2.png\>\""}], "]"}], ",", 
                    RowBox[{"{", 
                     RowBox[{"20", ",", "20"}], "}"}]}], "]"}]}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"inputDev", "=", "$DefaultAudioInputDevice"}], ";", 
                 "\[IndentingNewLine]", 
-                RowBox[{"xrn", "=", 
+                RowBox[{"fd", "=", 
                  RowBox[{"GetFiles", "[", 
-                  RowBox[{"\"\</dev/\>\"", ",", "\"\<cu.\>\""}], "]"}]}], ";",
-                 "\[IndentingNewLine]", 
+                  RowBox[{"\"\</dev/\>\"", ",", "\"\<*usb*\>\""}], "]"}]}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{"ff", "=", " ", 
+                 RowBox[{"GetFolders", "[", 
+                  RowBox[{
+                   RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+                   "\"\<Measurements/\>\""}], "]"}]}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"conf", "=", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{
+                    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+                    "\"\<main.conf\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{";;", ",", "#"}], "]"}], "]"}], "&"}], "/@", 
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "2"}], "}"}]}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"confassoc", "=", 
+                 RowBox[{"AssociationThread", "[", 
+                  RowBox[{
+                   RowBox[{"conf", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"conf", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"CenterFreq", "=", 
+                 RowBox[{"ToExpression", "[", 
+                  RowBox[{
+                  "confassoc", "[", "\"\<LaserPulseFrequency\>\"", "]"}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"Bandwidth", "=", 
+                 RowBox[{"ToExpression", "[", 
+                  RowBox[{"confassoc", "[", "\"\<FrequencyGap\>\"", "]"}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", " ", 
+                RowBox[{"MovAv", "=", 
+                 RowBox[{"ToExpression", "[", 
+                  RowBox[{"confassoc", "[", "\"\<MovingAvarage\>\"", "]"}], 
+                  "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                
                 RowBox[{"onoff", "=", "0"}], ";", "\[IndentingNewLine]", 
                 RowBox[{"OutImage", "=", 
                  RowBox[{"ConstantImage", "[", 
@@ -445,7 +499,7 @@ Cell[BoxData[{
                     "\[IndentingNewLine]", 
                     RowBox[{"fd", "=", " ", 
                     RowBox[{"GetFiles", "[", 
-                    RowBox[{"\"\</dev/\>\"", ",", "\"\<cu.\>\""}], "]"}]}], 
+                    RowBox[{"\"\</dev/\>\"", ",", "\"\<*usb*\>\""}], "]"}]}], 
                     ",", "\[IndentingNewLine]", 
                     RowBox[{"Appearance", "\[Rule]", "None"}]}], 
                     "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
@@ -453,7 +507,7 @@ Cell[BoxData[{
                     RowBox[{
                     RowBox[{"fd", "=", 
                     RowBox[{"GetFiles", "[", 
-                    RowBox[{"\"\</dev/\>\"", ",", "\"\<cu.\>\""}], "]"}]}], 
+                    RowBox[{"\"\</dev/\>\"", ",", "\"\<*usb*\>\""}], "]"}]}], 
                     ";", "\[IndentingNewLine]", 
                     RowBox[{"Dynamic", "[", 
                     RowBox[{"PopupMenu", "[", 
@@ -477,7 +531,7 @@ Cell[BoxData[{
                     RowBox[{"\"\<Serial\>\"", ",", " ", 
                     RowBox[{"{", 
                     RowBox[{"xrn", ",", " ", 
-                    RowBox[{"\"\<BaudRate\>\"", " ", "->", " ", "9600"}]}], 
+                    RowBox[{"\"\<BaudRate\>\"", " ", "->", " ", "115200"}]}], 
                     "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
                     RowBox[{"onoff", "=", "1"}]}], ",", "\[IndentingNewLine]", 
                     RowBox[{
@@ -502,40 +556,24 @@ Cell[BoxData[{
                    RowBox[{"Column", "[", 
                     RowBox[{"{", "\[IndentingNewLine]", 
                     RowBox[{
-                    RowBox[{"Row", "[", 
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"Slider", "[", 
-                    RowBox[{
-                    RowBox[{"Dynamic", "[", "n", "]"}], ",", " ", 
-                    RowBox[{"{", 
-                    RowBox[{"0", ",", " ", "10", ",", " ", "0.1"}], "}"}]}], 
-                    "]"}], ",", 
-                    RowBox[{"Dynamic", "[", "n", "]"}]}], "}"}], "]"}], ",", 
-                    "\[IndentingNewLine]", 
-                    RowBox[{"Button", "[", 
-                    RowBox[{
                     RowBox[{"Style", "[", 
                     RowBox[{
-                    "\"\<Set Laser Power (Idle)\>\"", ",", " ", 
-                    "\"\<Title\>\"", ",", " ", "14", ",", " ", 
+                    "\"\<Signal Input Device\>\"", ",", " ", "\"\<Title\>\"", 
+                    ",", " ", "20", ",", " ", 
                     RowBox[{"RGBColor", "[", 
                     RowBox[{"0.216", ",", " ", "0.659", ",", " ", "0.675"}], 
-                    "]"}]}], "]"}], ",", "\[IndentingNewLine]", " ", 
+                    "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
                     RowBox[{
-                    RowBox[{"DeviceWriteBuffer", "[", 
-                    RowBox[{"dev", ",", " ", 
+                    RowBox[{"inputDev", "=", "$DefaultAudioInputDevice"}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{"PopupMenu", "[", 
                     RowBox[{
-                    RowBox[{"StringPadLeft", "[", 
-                    RowBox[{
-                    RowBox[{"ToString", "[", "n", "]"}], ",", "3", ",", " ", 
-                    "\"\<0\>\""}], "]"}], " ", "<>", " ", 
-                    "\"\<r0m2l0\\n\>\""}]}], "]"}], ";", 
-                    "\[IndentingNewLine]", " ", 
-                    RowBox[{"Pause", "[", "0.2", "]"}]}]}], 
-                    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-                    "}"}], "]"}], ",", "\[IndentingNewLine]", "\"\<  \>\"", 
-                   ",", "\[IndentingNewLine]", "\"\<  \>\"", ",", 
+                    RowBox[{"Dynamic", "[", "inputDev", "]"}], ",", 
+                    "$AudioInputDevices"}], "]"}], "]"}]}]}], 
+                    "\[IndentingNewLine]", "}"}], "]"}], ",", 
+                   "\[IndentingNewLine]", "\"\<  \>\"", ",", 
+                   "\[IndentingNewLine]", "\"\<  \>\"", ",", 
                    "\[IndentingNewLine]", 
                    RowBox[{"Style", "[", 
                     RowBox[{
@@ -628,9 +666,8 @@ Cell[BoxData[{
                     "]"}]}], ";", "\[IndentingNewLine]", 
                     "\[IndentingNewLine]", 
                     RowBox[{"astream", "=", 
-                    RowBox[{
-                    "AudioStream", "[", "$DefaultAudioInputDevice", "]"}]}], 
-                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"AudioStream", "[", "inputDev", "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
                     RowBox[{"len", "=", 
                     RowBox[{"Length", "[", "comm", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
@@ -699,6 +736,7 @@ Cell[BoxData[{
                     RowBox[{"imgd", "=", 
                     RowBox[{"ImageData", "[", "img", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
+                    RowBox[{"ddy", "+=", "3"}], ";", "\[IndentingNewLine]", 
                     RowBox[{
                     RowBox[{"imgd", "[", 
                     RowBox[{"[", 
@@ -712,8 +750,7 @@ Cell[BoxData[{
                     ";", "\[IndentingNewLine]", 
                     RowBox[{"img", "=", 
                     RowBox[{"Image", "[", "imgd", "]"}]}], ";", 
-                    "\[IndentingNewLine]", 
-                    RowBox[{"ddy", "+=", "3"}], ";", "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", "\[IndentingNewLine]", 
                     RowBox[{"recording", "=", 
                     RowBox[{"AudioRecord", "[", "astream", "]"}]}], ";"}]}], 
                     " ", "\[IndentingNewLine]", "]"}], ";", 
@@ -875,7 +912,7 @@ Cell[BoxData[{
                     RowBox[{
                     RowBox[{"Dynamic", "[", "CenterFreq", "]"}], ",", 
                     RowBox[{"{", 
-                    RowBox[{"1", ",", "10000", ",", "1"}], "}"}]}], "]"}]}], 
+                    RowBox[{"1", ",", "20000", ",", "1"}], "}"}]}], "]"}]}], 
                     "\[IndentingNewLine]", "}"}], "]"}], ",", 
                     "\[IndentingNewLine]", 
                     RowBox[{"Column", "[", 
@@ -895,8 +932,8 @@ Cell[BoxData[{
                     RowBox[{
                     RowBox[{"Dynamic", "[", "Bandwidth", "]"}], ",", 
                     RowBox[{"{", 
-                    RowBox[{"1", ",", "300", ",", "1"}], "}"}]}], "]"}]}], 
-                    "\[IndentingNewLine]", "}"}], "]"}]}], 
+                    RowBox[{"1", ",", "CenterFreq", ",", "1"}], "}"}]}], 
+                    "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
                     "\[IndentingNewLine]", "}"}], "]"}], ",", 
                     "\[IndentingNewLine]", 
                     RowBox[{"Row", "[", 
@@ -1094,40 +1131,78 @@ Cell[BoxData[{
                     RowBox[{"[", 
                     RowBox[{
                     RowBox[{"half", "+", "1"}], ";;"}], "]"}], "]"}], "]"}]}],
-                     ";", "\[IndentingNewLine]", 
-                    RowBox[{"out", "=", 
-                    RowBox[{
-                    RowBox[{"(", 
-                    RowBox[{"fw", "+", "bk"}], ")"}], "/", "2."}]}], ";", 
-                    "\[IndentingNewLine]", 
+                     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
                     RowBox[{"ofset", "=", 
                     RowBox[{"Round", "[", 
                     RowBox[{
-                    RowBox[{"Length", "[", "out", "]"}], "*", "0.05"}], 
+                    RowBox[{"Length", "[", "fw", "]"}], "*", "0.05"}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"out1", "=", 
+                    RowBox[{"MovingAverage", "[", 
+                    RowBox[{
+                    RowBox[{"fw", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"ofset", ";;", 
+                    RowBox[{"-", "ofset"}]}], "]"}], "]"}], ",", "MovAv"}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"out2", "=", 
+                    RowBox[{"MovingAverage", "[", 
+                    RowBox[{
+                    RowBox[{"bk", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"ofset", ";;", 
+                    RowBox[{"-", "ofset"}]}], "]"}], "]"}], ",", "MovAv"}], 
                     "]"}]}], ";", "\[IndentingNewLine]", 
                     "\[IndentingNewLine]", 
                     RowBox[{"AppendTo", "[", 
                     RowBox[{"imglist", ",", 
-                    RowBox[{"MovingAverage", "[", 
-                    RowBox[{
-                    RowBox[{"out", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"ofset", ";;", 
-                    RowBox[{"-", "ofset"}]}], "]"}], "]"}], ",", "MovAv"}], 
-                    "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"{", 
+                    RowBox[{"out1", ",", "out2"}], "}"}]}], "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
                     RowBox[{"{", 
                     RowBox[{"iii", ",", 
                     RowBox[{"Range", "[", 
                     RowBox[{"2", ",", "dy"}], "]"}]}], "}"}]}], 
                     "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
                     "\[IndentingNewLine]", 
+                    RowBox[{"imglistFW", "=", 
+                    RowBox[{"imglist", "[", 
+                    RowBox[{"[", 
+                    RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"imglistBK", "=", 
+                    RowBox[{"imglist", "[", 
+                    RowBox[{"[", 
+                    RowBox[{";;", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                    RowBox[{"resssBK", "=", 
+                    RowBox[{
+                    RowBox[{"ImageResize", "[", 
+                    RowBox[{
+                    RowBox[{"Image", "[", "imglistBK", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"400", ",", "400"}], "}"}]}], "]"}], " ", "//", 
+                    "ImageAdjust"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"resssFW", "=", 
+                    RowBox[{
+                    RowBox[{"ImageResize", "[", 
+                    RowBox[{
+                    RowBox[{"Image", "[", "imglistFW", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"400", ",", "400"}], "}"}]}], "]"}], " ", "//", 
+                    "ImageAdjust"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"resss", "=", 
+                    RowBox[{"ImageAdd", "[", 
+                    RowBox[{"resssFW", ",", "resssFW"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
                     RowBox[{"mm", "=", 
-                    RowBox[{"MinMax", "[", "imglist", "]"}]}], ";", 
+                    RowBox[{"MinMax", "[", "resss", "]"}]}], ";", 
                     "\[IndentingNewLine]", 
                     RowBox[{"ires", "=", 
                     RowBox[{
                     RowBox[{"(", 
-                    RowBox[{"imglist", "-", 
+                    RowBox[{"resss", "-", 
                     RowBox[{"mm", "[", 
                     RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
                     RowBox[{"(", 
@@ -1139,25 +1214,20 @@ Cell[BoxData[{
                     RowBox[{"mm", "[", 
                     RowBox[{"[", "1", "]"}], "]"}]}], ")"}]}], ")"}]}]}], ";",
                      "\[IndentingNewLine]", 
-                    RowBox[{"resss", "=", 
-                    RowBox[{"ImageResize", "[", 
-                    RowBox[{
-                    RowBox[{"Image", "[", "ires", "]"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"400", ",", "400"}], "}"}]}], "]"}]}], ";", 
-                    "\[IndentingNewLine]", 
                     RowBox[{"OutImage", "=", 
+                    RowBox[{
                     RowBox[{"Sharpen", "[", 
                     RowBox[{"ImageResize", "[", 
                     RowBox[{
                     RowBox[{"Colorize", "[", 
-                    RowBox[{"resss", ",", 
+                    RowBox[{"ires", ",", 
                     RowBox[{
                     "ColorFunction", "\[Rule]", "\"\<SunsetColors\>\""}]}], 
                     "]"}], ",", 
                     RowBox[{"{", 
-                    RowBox[{"300", ",", "300"}], "}"}]}], "]"}], "]"}]}], 
-                    ";"}], "\[IndentingNewLine]", ",", 
+                    RowBox[{"300", ",", "300"}], "}"}]}], "]"}], "]"}], "//", 
+                    "ImageAdjust"}]}], ";"}], "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", ",", 
                     RowBox[{"ImageSize", "\[Rule]", 
                     RowBox[{"{", 
                     RowBox[{"70", ",", "40"}], "}"}]}], ",", 
@@ -1222,8 +1292,8 @@ Cell[BoxData[{
                RowBox[{"{", 
                 RowBox[{"320", ",", " ", "320"}], "}"}]}]}], 
              "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], 
-          "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "}"}], "]"}],
-       "\[IndentingNewLine]", ",", 
+          "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], "\[IndentingNewLine]",
+       ",", 
       RowBox[{
       "WindowTitle", "->", "\"\<Scanning Laser Microscope Controller\>\""}]}],
       "]"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
@@ -1439,16 +1509,26 @@ Cell[BoxData[{
    3.8746502025699787`*^9, 3.8746502706015882`*^9}, {3.8746503184898767`*^9, 
    3.874650330559846*^9}, {3.8746602439951143`*^9, 3.874660246102837*^9}, {
    3.874660290991056*^9, 3.874660297104342*^9}, {3.874660341673588*^9, 
-   3.874660342139929*^9}},
- CellLabel->
-  "(Debug) In[101]:=",ExpressionUUID->"62194dec-9b10-492b-a48c-e56e6204b28d"]
+   3.874660342139929*^9}, {3.874996142370797*^9, 3.8749961773746767`*^9}, {
+   3.87499633022185*^9, 3.8749963748482037`*^9}, {3.87499644265331*^9, 
+   3.874996446172512*^9}, {3.8749966865639353`*^9, 3.874996713255149*^9}, {
+   3.874996783780961*^9, 3.874996814218472*^9}, {3.87499718756993*^9, 
+   3.874997188759153*^9}, {3.8750014472024612`*^9, 3.8750014563354893`*^9}, {
+   3.875003741506583*^9, 3.875003745367057*^9}, {3.8750186861904488`*^9, 
+   3.8750186882173643`*^9}, {3.875036620083971*^9, 3.875036642644609*^9}, {
+   3.8750367501360283`*^9, 3.875036779543096*^9}, {3.87503684933263*^9, 
+   3.875036851409066*^9}, {3.875037404235643*^9, 3.875037432907905*^9}, {
+   3.8751251425000553`*^9, 3.875125143032995*^9}, {3.8751306316081047`*^9, 
+   3.875130635579479*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"62194dec-9b10-492b-a48c-e56e6204b28d"]
 },
-WindowSize->{1019, 911},
-WindowMargins->{{79, Automatic}, {Automatic, 0}},
+WindowSize->{1314, 911},
+WindowMargins->{{3, Automatic}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (February 4, 2022)",
-StyleDefinitions->"Default.nb",
-ExpressionUUID->"f93a2380-02be-440a-9db8-b8159fa9a311"
+StyleDefinitions->FrontEnd`FileName[{"Utility"}, "Notepad.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"c951d59b-346f-4bcd-b8d2-f076864e888a"
 ]
 (* End of Notebook Content *)
 
@@ -1461,7 +1541,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 73123, 1423, 6086, "Input",ExpressionUUID->"62194dec-9b10-492b-a48c-e56e6204b28d"]
+Cell[558, 20, 77238, 1502, 5806, "Input",ExpressionUUID->"62194dec-9b10-492b-a48c-e56e6204b28d"]
 }
 ]
 *)

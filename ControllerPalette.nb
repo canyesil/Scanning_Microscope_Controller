@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     31050,        650]
-NotebookOptionsPosition[     30577,        632]
-NotebookOutlinePosition[     31037,        650]
-CellTagsIndexPosition[     30994,        647]
+NotebookDataLength[     32180,        673]
+NotebookOptionsPosition[     31707,        655]
+NotebookOutlinePosition[     32167,        673]
+CellTagsIndexPosition[     32124,        670]
 WindowTitle->Scanning Laser Microscope Controller
 WindowFrame->Palette*)
 
@@ -42,8 +42,23 @@ Cell[BoxData[
            NotebookDirectory[] <> "dashed_area.png"; $CellContext`refresh = 
            ImageResize[
              Import[NotebookDirectory[] <> "VistalCO_refresh_icon_2.png"], {
-             20, 20}]; $CellContext`xrn = $CellContext`GetFiles[
-            "/dev/", "cu."]; $CellContext`onoff = 0; $CellContext`OutImage = 
+             20, 20}]; $CellContext`inputDev = $DefaultAudioInputDevice; \
+$CellContext`fd = $CellContext`GetFiles[
+            "/dev/", "*usb*"]; $CellContext`ff = $CellContext`GetFolders[
+            NotebookDirectory[] <> "Measurements/"]; $CellContext`conf = 
+           Map[Part[
+              Import[NotebookDirectory[] <> "main.conf"], 
+              Span[1, All], #]& , {1, 2}]; $CellContext`confassoc = 
+           AssociationThread[
+             Part[$CellContext`conf, 1], 
+             Part[$CellContext`conf, 2]]; $CellContext`CenterFreq = 
+           ToExpression[
+             $CellContext`confassoc[
+             "LaserPulseFrequency"]]; $CellContext`Bandwidth = ToExpression[
+             $CellContext`confassoc["FrequencyGap"]]; $CellContext`MovAv = 
+           ToExpression[
+             $CellContext`confassoc["MovingAvarage"]]; $CellContext`onoff = 
+           0; $CellContext`OutImage = 
            ConstantImage[0.6, {600, 600}]; $CellContext`status = 
            Style["Ready", 14, Black]; $CellContext`progresss = 
            Style["0", 14, Black]; $CellContext`progreS = 
@@ -97,8 +112,9 @@ Cell[BoxData[
                   ButtonBox[
                   "\"Apply\"", 
                    ButtonFunction :> ($CellContext`cmretto = 
-                    Table[0, $CellContext`dx, $CellContext`dy]; \
-$CellContext`img = Image[
+                    Table[
+                    0, $CellContext`dx, $CellContext`dy]; $CellContext`img = 
+                    Image[
                     Table[{1., 1., 1.}, 
                     Round[$CellContext`dx 3 $CellContext`ratio], 
                     Round[$CellContext`dy 3 $CellContext`ratio]]]; Null), 
@@ -191,7 +207,7 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                  ImageSizeRaw -> {20., 20.}, 
                  PlotRange -> {{0, 20.}, {0, 20.}}], 
                 ButtonFunction :> ($CellContext`fd = $CellContext`GetFiles[
-                  "/dev/", "cu."]), Appearance -> None, Evaluator -> 
+                  "/dev/", "*usb*"]), Appearance -> None, Evaluator -> 
                 Automatic, Method -> "Preemptive"], 
                DynamicBox[
                 ToBoxes[
@@ -205,7 +221,7 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                    RGBColor[0, 1, 0, 0.5]; $CellContext`dev = 
                    DeviceOpen[
                     "Serial", {$CellContext`xrn, "BaudRate" -> 
-                    9600}]; $CellContext`onoff = 1, $CellContext`c = 
+                    115200}]; $CellContext`onoff = 1, $CellContext`c = 
                    RGBColor[0.9117, 0.396, 0.0274]; 
                   DeviceClose[$CellContext`dev]; $CellContext`onoff = 0; 
                   Null], Background -> Dynamic[$CellContext`c], 
@@ -214,20 +230,13 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
               "RowDefault"]}, {"\" \""}, {
              TagBox[
               GridBox[{{
-                 TemplateBox[{
-                   SliderBox[
-                    Dynamic[$CellContext`n], {0, 10, 0.1}], 
-                   DynamicBox[
-                    ToBoxes[$CellContext`n, StandardForm]]}, "RowDefault"]}, {
-                
-                 ButtonBox[
-                  StyleBox["\"Set Laser Power (Idle)\"", "Title", 14, 
-                   RGBColor[0.216, 0.659, 0.675], StripOnInput -> False], 
-                  ButtonFunction :> (
-                   DeviceWriteBuffer[$CellContext`dev, StringPadLeft[
-                    ToString[$CellContext`n], 3, "0"] <> "r0m2l0\n"]; 
-                   Pause[0.2]), Appearance -> Automatic, Evaluator -> 
-                  Automatic, Method -> "Preemptive"]}}, 
+                 StyleBox["\"Signal Input Device\"", "Title", 20, 
+                  RGBColor[0.216, 0.659, 0.675], StripOnInput -> False]}, {
+                 DynamicBox[
+                  ToBoxes[
+                   PopupMenu[
+                    Dynamic[$CellContext`inputDev], $AudioInputDevices], 
+                   StandardForm]]}}, 
                GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
                "Column", 
                GridBoxItemSize -> {
@@ -275,7 +284,7 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                   Import[NotebookDirectory[] <> 
                     "commngap.mx"]; $CellContext`temp = 
                   Style["Running... ", 14, Black]; $CellContext`astream = 
-                  AudioStream[$DefaultAudioInputDevice]; $CellContext`len = 
+                  AudioStream[$CellContext`inputDev]; $CellContext`len = 
                   Length[$CellContext`comm]; $CellContext`recstart = 
                   Range[1, $CellContext`len, 3]; $CellContext`recstop = 
                   Range[3, $CellContext`len, 3]; 
@@ -294,12 +303,13 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                     Style["Stopped", 14, Black]; Break[]]; If[
                     
                     MemberQ[$CellContext`recstart, $CellContext`ii], \
-$CellContext`imgd = ImageData[$CellContext`img]; Part[$CellContext`imgd, 
+$CellContext`imgd = ImageData[$CellContext`img]; AddTo[$CellContext`ddy, 3]; 
+                    Part[$CellContext`imgd, 
                     Span[$CellContext`ddy, $CellContext`ddy + 3]] = 
                     Part[$CellContext`imgd, 
                     Span[$CellContext`ddy, $CellContext`ddy + 3]] 
-                    0; $CellContext`img = Image[$CellContext`imgd]; 
-                    AddTo[$CellContext`ddy, 3]; $CellContext`recording = 
+                    0; $CellContext`img = 
+                    Image[$CellContext`imgd]; $CellContext`recording = 
                     AudioRecord[$CellContext`astream]; Null]; 
                    DeviceWriteBuffer[$CellContext`dev, 
                     Part[$CellContext`comm, $CellContext`ii]]; 
@@ -442,7 +452,7 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                     ToBoxes[$CellContext`CenterFreq, StandardForm]]}, 
                     "RowDefault"]}, {
                     SliderBox[
-                    Dynamic[$CellContext`CenterFreq], {1, 10000, 1}]}}, 
+                    Dynamic[$CellContext`CenterFreq], {1, 20000, 1}]}}, 
                     GridBoxAlignment -> {"Columns" -> {{Left}}}, 
                     DefaultBaseStyle -> "Column", 
                     GridBoxItemSize -> {
@@ -463,7 +473,7 @@ vNaDMsq6iqG9vxnqe2thdeEKdmC2H7t7oPPjvP0LVKoWgA==
                     ToBoxes[$CellContext`Bandwidth, StandardForm]]}, 
                     "RowDefault"]}, {
                     SliderBox[
-                    Dynamic[$CellContext`Bandwidth], {1, 300, 1}]}}, 
+                    Dynamic[$CellContext`Bandwidth], {1, 11777.7777, 1}]}}, 
                     GridBoxAlignment -> {"Columns" -> {{Left}}}, 
                     DefaultBaseStyle -> "Column", 
                     GridBoxItemSize -> {
@@ -555,28 +565,41 @@ $CellContext`resamplingC =
                    Part[$CellContext`data, 
                     Span[1, $CellContext`half]]; $CellContext`bk = Reverse[
                     Part[$CellContext`data, 
-                    Span[$CellContext`half + 1, 
-                    All]]]; $CellContext`out = ($CellContext`fw + \
-$CellContext`bk)/2.; $CellContext`ofset = 
-                   Round[Length[$CellContext`out] 0.05]; 
-                  AppendTo[$CellContext`imglist, 
-                    MovingAverage[
-                    Part[$CellContext`out, 
+                    Span[$CellContext`half + 1, All]]]; $CellContext`ofset = 
+                   Round[Length[$CellContext`fw] 0.05]; $CellContext`out1 = 
+                   MovingAverage[
+                    Part[$CellContext`fw, 
                     
                     Span[$CellContext`ofset, -$CellContext`ofset]], \
-$CellContext`MovAv]], {$CellContext`iii, 
-                   Range[2, $CellContext`dy]}]; $CellContext`mm = 
-                 MinMax[$CellContext`imglist]; $CellContext`ires = \
-($CellContext`imglist - Part[$CellContext`mm, 1]) (1/(
-                   Part[$CellContext`mm, 2] - 
-                   Part[$CellContext`mm, 1])); $CellContext`resss = 
-                 ImageResize[
-                   Image[$CellContext`ires], {400, 
-                   400}]; $CellContext`OutImage = Sharpen[
-                   ImageResize[
+$CellContext`MovAv]; $CellContext`out2 = MovingAverage[
+                    Part[$CellContext`bk, 
                     
-                    Colorize[$CellContext`resss, ColorFunction -> 
-                    "SunsetColors"], {300, 300}]]; Null), 
+                    Span[$CellContext`ofset, -$CellContext`ofset]], \
+$CellContext`MovAv]; 
+                  AppendTo[$CellContext`imglist, {$CellContext`out1, \
+$CellContext`out2}], {$CellContext`iii, 
+                   Range[2, $CellContext`dy]}]; $CellContext`imglistFW = 
+                 Part[$CellContext`imglist, 
+                   Span[1, All], 1]; $CellContext`imglistBK = 
+                 Part[$CellContext`imglist, 
+                   Span[1, All], 2]; $CellContext`resssBK = ImageAdjust[
+                   ImageResize[
+                    Image[$CellContext`imglistBK], {400, 
+                    400}]]; $CellContext`resssFW = ImageAdjust[
+                   ImageResize[
+                    Image[$CellContext`imglistFW], {400, 
+                    400}]]; $CellContext`resss = 
+                 ImageAdd[$CellContext`resssFW, $CellContext`resssFW]; \
+$CellContext`mm = 
+                 MinMax[$CellContext`resss]; $CellContext`ires = \
+($CellContext`resss - Part[$CellContext`mm, 1]) (1/(Part[$CellContext`mm, 2] - 
+                   Part[$CellContext`mm, 1])); $CellContext`OutImage = 
+                 ImageAdjust[
+                   Sharpen[
+                    ImageResize[
+                    
+                    Colorize[$CellContext`ires, ColorFunction -> 
+                    "SunsetColors"], {300, 300}]]]; Null), 
                ImageSize -> {70, 40}, Method -> "Queued", Appearance -> 
                Automatic, Evaluator -> Automatic], 
               ButtonBox[
@@ -628,7 +651,7 @@ $CellContext`MovAv]], {$CellContext`iii,
  ShowStringCharacters->False,
  FontFamily:>CurrentValue["PanelFontFamily"],
  FontSize:>CurrentValue[
-  "PanelFontSize"],ExpressionUUID->"46e1cde5-2e6d-4b34-93e7-d237108fde64"]
+  "PanelFontSize"],ExpressionUUID->"5b87778e-c6ec-4705-abf0-43e6bc4ca5ef"]
 },
 WindowSize->All,
 WindowMargins->{{Automatic, 0}, {Automatic, 0}},
@@ -636,7 +659,7 @@ WindowElements->{},
 WindowTitle->"Scanning Laser Microscope Controller",
 FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (February 4, 2022)",
 StyleDefinitions->"Palette.nb",
-ExpressionUUID->"1df8d790-be7d-4d66-b565-e89887419b6a"
+ExpressionUUID->"dfe55276-0d22-45ce-b659-7f521f8f59ba"
 ]
 (* End of Notebook Content *)
 
@@ -649,7 +672,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[609, 21, 29964, 609, 724, InheritFromParent,ExpressionUUID->"46e1cde5-2e6d-4b34-93e7-d237108fde64",
+Cell[609, 21, 31094, 632, 724, InheritFromParent,ExpressionUUID->"5b87778e-c6ec-4705-abf0-43e6bc4ca5ef",
  PageBreakAbove->True,
  PageBreakWithin->False]
 }
