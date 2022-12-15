@@ -1,0 +1,325 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12088,        317]
+NotebookOptionsPosition[     11696,        302]
+NotebookOutlinePosition[     12132,        319]
+CellTagsIndexPosition[     12089,        316]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"path", "=", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<ControllerPalette.nb\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], " ", "<>", " ", 
+     "\"\<Functions.m\>\""}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"conf", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{
+        RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<main.conf\>\""}], 
+       "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", "#"}], "]"}], "]"}], "&"}], "/@", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"confassoc", "=", 
+    RowBox[{"AssociationThread", "[", 
+     RowBox[{
+      RowBox[{"conf", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"conf", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CenterFreq", "=", 
+   RowBox[{"ToExpression", "[", 
+    RowBox[{"confassoc", "[", "\"\<LaserPulseFrequency\>\"", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Bandwidth", "=", 
+   RowBox[{"ToExpression", "[", 
+    RowBox[{"confassoc", "[", "\"\<FrequencyGap\>\"", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"MovAv", "=", 
+    RowBox[{"ToExpression", "[", 
+     RowBox[{"confassoc", "[", "\"\<MovingAvarage\>\"", "]"}], "]"}]}], ";"}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sectioncolor", "=", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{
+     "0.3490196078431372", ",", "0.349019607843137`", ",", 
+      "0.3529411764705882"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dx", "=", "50"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dy", "=", "50"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ratio", "=", "1"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"img", "=", 
+   RowBox[{"Image", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1.", ",", "1.", ",", "1."}], "}"}], ",", 
+      RowBox[{"Round", "[", 
+       RowBox[{"dx", "*", "3", "*", "ratio"}], "]"}], ",", 
+      RowBox[{"Round", "[", 
+       RowBox[{"dy", "*", "3", "*", "ratio"}], "]"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OutImage", "=", 
+   RowBox[{"ImageResize", "[", 
+    RowBox[{
+     RowBox[{"Image", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{"0.3", ",", "300", ",", "300"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"300", ",", "240"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], " ", "<>", " ", 
+     "\"\<dashed_area.png\>\""}], ",", " ", "img"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"imgpath", "=", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], " ", "<>", " ", 
+     "\"\<dashed_area.png\>\""}]}], ";"}], " ", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"refresh", "=", 
+   RowBox[{"ImageResize", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], " ", "<>", 
+       "\"\<VistalCO_refresh_icon_2.png\>\""}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"20", ",", "20"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"MemberQ", "[", 
+      RowBox[{"$AudioInputDevices", ",", " ", "\"\<External Microphone\>\""}],
+       "]"}], ",", " ", 
+     RowBox[{
+     "$DefaultAudioInputDevice", " ", "=", " ", 
+      "\"\<External Microphone\>\""}]}], " ", "]"}], 
+   ";"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"inputDev", "=", "$DefaultAudioInputDevice"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fd", "=", 
+   RowBox[{"GetFiles", "[", 
+    RowBox[{"\"\</dev/\>\"", ",", "\"\<*usb*\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ff", "=", " ", 
+    RowBox[{"GetFolders", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<Measurements/\>\""}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"onoff", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OutImage", "=", 
+   RowBox[{"ConstantImage", "[", 
+    RowBox[{"0.6", ",", 
+     RowBox[{"{", 
+      RowBox[{"600", ",", "600"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"status", "=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Ready\>\"", ",", " ", "14", ",", "Black"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"progresss", "=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<0\>\"", ",", " ", "14", ",", "Black"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"progreS", "=", 
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<0\>\"", ",", " ", "14", ",", "Black"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Get", "[", 
+   "\"\</Volumes/Macintosh/Users/7tepe/Desktop/Scanning_Microscope_Controller/\
+Panel_1_Scan_Settngs.m\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Get", "[", 
+   "\"\</Volumes/Macintosh/Users/7tepe/Desktop/Scanning_Microscope_Controller/\
+Panel_2_Stage_and_Microscopel.m\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "Get", "[", 
+    "\"\</Volumes/Macintosh/Users/7tepe/Desktop/Scanning_Microscope_\
+Controller/Panel_3_Image_Processing.m\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TabColor", "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{"0.847058823529411", ",", "0.1333333333333333", ",", "0."}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"palet", "=", 
+   RowBox[{"CreatePalette", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"TabView", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", "\"\<Scan Parameters\>\"", "]"}], ",", "18", 
+           ",", "Bold", ",", "TabColor"}], "]"}], "->", 
+         RowBox[{"ScanSettings", "[", "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", "\"\<Device & Controll\>\"", "]"}], ",", "18",
+            ",", "Bold", ",", " ", "TabColor"}], "]"}], "->", 
+         RowBox[{"DeviceSettings", "[", "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", "\"\<Image Processing\>\"", "]"}], ",", "18", 
+           ",", "Bold", ",", "TabColor"}], "]"}], "->", 
+         RowBox[{"ImageProcessing", "[", "]"}]}]}], "}"}], "]"}], ",", 
+     RowBox[{
+     "WindowTitle", "->", "\"\<Scanning Laser Microscope Controller\>\""}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NotebookSave", "[", 
+   RowBox[{"palet", ",", "path"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"NotebookClose", "[", "palet", "]"}], ";"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{
+  3.877116275733523*^9, {3.877117763760037*^9, 3.87711776424573*^9}, {
+   3.877117823309354*^9, 3.877117823513905*^9}, 3.877117869599474*^9, {
+   3.877117925667922*^9, 3.877117944460712*^9}, {3.877118094962652*^9, 
+   3.877118134125798*^9}, {3.877118172252859*^9, 3.877118198188077*^9}, {
+   3.877213300414773*^9, 3.877213320190208*^9}, {3.877213489069405*^9, 
+   3.877213489863492*^9}, {3.877213548839388*^9, 3.877213549534246*^9}, {
+   3.877275668935268*^9, 3.877275722438595*^9}, {3.877275765513021*^9, 
+   3.877275765812357*^9}, {3.877283445022903*^9, 3.877283464128015*^9}, {
+   3.877283501389028*^9, 3.8772835017706003`*^9}, 3.877283550356042*^9, {
+   3.877283617007783*^9, 3.877283644026516*^9}, {3.8772836758230143`*^9, 
+   3.8772836809564323`*^9}, {3.8772837143751173`*^9, 3.877283726844782*^9}, {
+   3.8772837864869127`*^9, 3.877283808579159*^9}, {3.877283875995363*^9, 
+   3.8772839319791527`*^9}, 3.877351418483192*^9, {3.877351477135892*^9, 
+   3.8773514786970663`*^9}, {3.877351535728147*^9, 3.877351569439301*^9}, {
+   3.87735163346338*^9, 3.877351640445058*^9}, {3.8773516715444603`*^9, 
+   3.877351744670376*^9}, {3.87735179149721*^9, 3.877351804908904*^9}, {
+   3.877351876380569*^9, 3.8773518862138968`*^9}, {3.8773519222668962`*^9, 
+   3.877351930983289*^9}, {3.877352013182535*^9, 3.877352040965291*^9}, {
+   3.877352113547667*^9, 3.877352138886705*^9}, {3.8773522583667297`*^9, 
+   3.8773523344222097`*^9}, {3.877352381872608*^9, 3.8773524012615643`*^9}, {
+   3.877352435224546*^9, 3.8773524763839617`*^9}, {3.877379462028076*^9, 
+   3.877379472700522*^9}, {3.87737951812694*^9, 3.8773795646176577`*^9}, {
+   3.877379611957099*^9, 3.877379674458005*^9}, {3.87737972137516*^9, 
+   3.8773797230284863`*^9}, {3.877379787076046*^9, 3.877379787275934*^9}, {
+   3.8773798272572937`*^9, 3.877379880358086*^9}, {3.877379932017764*^9, 
+   3.8773799894425573`*^9}, {3.877380085932225*^9, 3.8773801010004053`*^9}, {
+   3.877380145466116*^9, 3.877380159503399*^9}, {3.877380220489026*^9, 
+   3.8773802224625196`*^9}, {3.877380441756897*^9, 3.877380442656784*^9}, {
+   3.877380529989605*^9, 3.877380552104126*^9}, {3.8773806071340427`*^9, 
+   3.8773806126520233`*^9}, {3.877380714921673*^9, 3.877380727084867*^9}, {
+   3.8773825622556877`*^9, 3.877382596202368*^9}, {3.877382639131804*^9, 
+   3.8773826590057983`*^9}, {3.877382716420351*^9, 3.877382775109524*^9}, {
+   3.8773828197318783`*^9, 3.877382875833868*^9}, 3.8773829506978827`*^9, {
+   3.8773829845905323`*^9, 3.877382999820588*^9}, {3.8773830797836857`*^9, 
+   3.8773830842711143`*^9}, {3.877383150341535*^9, 3.877383199307331*^9}, {
+   3.8773832529637327`*^9, 3.877383253862245*^9}, {3.877383322059259*^9, 
+   3.87738333534051*^9}, {3.877383397199842*^9, 3.877383400052659*^9}, {
+   3.8773834389552727`*^9, 3.877383439466214*^9}, {3.877387518187358*^9, 
+   3.877387532046493*^9}, {3.877389421933425*^9, 3.877389431207262*^9}, {
+   3.8783941513870573`*^9, 3.878394168315372*^9}, {3.878394298922975*^9, 
+   3.878394337285283*^9}, 3.878394554167263*^9, {3.878422414233738*^9, 
+   3.878422509740048*^9}, {3.878422554172287*^9, 3.878422562207624*^9}, {
+   3.878423333745878*^9, 3.878423337470993*^9}, {3.8784234887606907`*^9, 
+   3.878423518313341*^9}, {3.878423712034131*^9, 3.878423714422426*^9}},
+ CellLabel->
+  "(Debug) In[67]:=",ExpressionUUID->"f7e72852-f39c-489e-9b85-3d30b2c0e5f2"]
+},
+WindowSize->{1205, 969},
+WindowMargins->{{157, Automatic}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.1 for Mac OS X ARM (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c951d59b-346f-4bcd-b8d2-f076864e888a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 11134, 280, 1011, "Input",ExpressionUUID->"f7e72852-f39c-489e-9b85-3d30b2c0e5f2"]
+}
+]
+*)
+
